@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
+import { Aura } from 'primeng/themes/aura';
+import { Lara } from 'primeng/themes/lara';
+import { usePreset, updatePrimaryPalette } from 'primeng/themes';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +14,16 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Angry-Task';
+  constructor(private config: PrimeNGConfig) {
+    this.config.theme.set({
+      preset: Aura,
+      options: {
+        prefix: 'p',
+        darkModeSelector: '.set-dark-mode',
+        cssLayer: false,
+      },
+    });
+  }
 }
 
 // import { PrimeNGConfig } from 'primeng/api';
