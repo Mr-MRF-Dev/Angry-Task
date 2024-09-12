@@ -1,2 +1,10 @@
 <p-card header="ToDoList Name" subheader="SubTitle" styleClass="!w-80 !h-full">
+  <div class="flex flex-col gap-2">
+    <div *ngFor="let task of tasks">
+      <div class="flex justify-between">
+        <p>{{ task.title }}</p>
+        <p>{{ task.completed }}</p>
+      </div>
+    </div>
+  </div>
 </p-card>
