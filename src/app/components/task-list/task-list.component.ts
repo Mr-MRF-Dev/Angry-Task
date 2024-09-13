@@ -13,7 +13,7 @@ import { TaskItemComponent } from '../task-item/task-item.component';
 })
 export class TaskListComponent {
   tasks: Task[] = [
-    { id: 1, title: 'Buy milk', completed: false },
+    { id: 1, title: 'Buy milk', completed: false, description: 'some info' },
     { id: 2, title: 'Buy bread', completed: true },
     { id: 3, title: 'Buy cheese', completed: false },
     { id: 4, title: 'Buy butter', completed: false },

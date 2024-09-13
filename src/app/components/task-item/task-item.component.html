@@ -1,4 +1,33 @@
-<div class="flex justify-between">
-  <p>{{ task.title }}</p>
-  <p>{{ task.completed }}</p>
-</div>
+<p-panel
+  styleClass="!border-0 !p-0"
+  [toggleable]="task.description"
+  [collapsed]="true"
+>
+  <ng-template pTemplate="header" style="padding: 0">
+    <div class="flex items-center gap-2">
+      <p-checkbox
+        [(ngModel)]="task.completed"
+        [binary]="true"
+        inputId="completed"
+      />
+      <label for="completed" class="{{ task.completed ? '' : 'font-bold' }}">
+        {{ task.title }}
+      </label>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="icons">
+    <p-button
+      icon="pi pi-cog"
+      severity="secondary"
+      rounded
+      text
+      (click)="menu.toggle($event)"
+    />
+    <p-menu #menu id="config_menu" [model]="items" [popup]="true" />
+  </ng-template>
+
+  <p class="m-0 ps-3">
+    {{ task.description }}
+  </p>
+</p-panel>

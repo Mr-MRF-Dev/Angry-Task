@@ -9,6 +9,9 @@ body {
   block-size: 100vh;
 
   position: relative;
+
+  --p-panel-header-padding: 0;
+  --p-panel-toggleable-header-padding: 0;
 }
 
 app-root {
