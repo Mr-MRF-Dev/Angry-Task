@@ -4,13 +4,13 @@ import { Task } from '../../models/task';
 import { NgForOf } from '@angular/common';
 
 @Component({
-  selector: 'app-todo-list',
+  selector: 'app-task-list',
   standalone: true,
   imports: [NgForOf, CardModule],
-  templateUrl: './todo-list.component.html',
-  styleUrl: './todo-list.component.css',
+  templateUrl: './task-list.component.html',
+  styleUrl: './task-list.component.css',
 })
-export class TodoListComponent {
+export class TaskListComponent {
   tasks: Task[] = [
     { id: 1, title: 'Buy milk', completed: false },
     { id: 2, title: 'Buy bread', completed: true },
