@@ -15,3 +15,22 @@ app-root {
   inline-size: 100%;
   block-size: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 1rem;
+  background-color: #eee;
+  margin: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}

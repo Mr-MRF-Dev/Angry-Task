@@ -1,7 +1,7 @@
-<p-card header="ToDoList Name" subheader="SubTitle" styleClass="!w-80 !h-full">
-  <div class="flex flex-col gap-2">
-    <div *ngFor="let task of tasks">
-      <app-task-item [task]="task" />
-    </div>
-  </div>
+<p-card
+  header="TaskList Name"
+  subheader="SubTitle"
+  styleClass="!w-80 !h-full !overflow-y-auto !p-0"
+>
+  <app-task-item *ngFor="let task of tasks" [task]="task" />
 </p-card>
