@@ -14,6 +14,16 @@ body {
   --p-panel-toggleable-header-padding: 0;
 }
 
+/* change the card component style to fix overflow styles */
+.p-card-body {
+  height: 100%;
+}
+
+.p-card-content {
+  height: 20rem;
+  flex-grow: 1;
+}
+
 app-root {
   inline-size: 100%;
   block-size: 100%;
