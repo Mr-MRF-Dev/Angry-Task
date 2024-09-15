@@ -1,0 +1,47 @@
+<p-button
+  styleClass="my-2"
+  label="Create New Task"
+  icon="pi pi-plus"
+  size="small"
+  [rounded]="true"
+  [outlined]="true"
+  (click)="showDialog()"
+/>
+
+<p-dialog header="Create New Task" [modal]="true" [(visible)]="visible">
+  <form [formGroup]="formGroup" class="flex min-w-64 flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <label for="title" class="font-semibold">Title</label>
+      <input
+        pInputText
+        type="text"
+        id="title"
+        aria-describedby="title-help"
+        formControlName="title"
+        class="{{ formGroup.invalid ? 'valid ng-dirty' : '' }}"
+      />
+      <small id="title-help"> Task title is required </small>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label for="description" class="font-semibold">Description</label>
+      <input
+        pInputText
+        type="text"
+        id="description"
+        formControlName="description"
+      />
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <div class="flex justify-end gap-2">
+      <p-button label="Cancel" severity="secondary" (click)="cancel()" />
+      <p-button
+        label="Save"
+        [disabled]="formGroup.invalid"
+        (click)="submit()"
+      />
+    </div>
+  </ng-template>
+</p-dialog>
