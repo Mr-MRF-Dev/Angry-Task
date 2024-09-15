@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { Task } from '../../models/task';
-import { NgForOf } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { MessageService } from 'primeng/api';
@@ -9,7 +8,7 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgForOf, ToastModule, CardModule, TaskItemComponent],
+  imports: [ToastModule, CardModule, TaskItemComponent],
   providers: [MessageService],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
