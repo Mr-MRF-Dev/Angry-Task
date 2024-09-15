@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -18,22 +18,29 @@ import { Task } from '../../models/task';
   styleUrl: './add-task-dialog.component.css',
 })
 export class AddTaskDialogComponent implements OnInit {
+  @Output() newTask = new EventEmitter<Task>();
+
   visible: boolean = false;
   formGroup!: FormGroup;
 
   ngOnInit() {
     this.formGroup = new FormGroup({
       title: new FormControl<Task['title']>('', Validators.required),
-      description: new FormControl<Task['description']>(''),
+      description: new FormControl<Task['description'] | undefined>(undefined),
     });
   }
 
   submit() {
     if (this.formGroup.valid) {
-      this.visible = false;
+      const newTask: Task = {
+        title: this.formGroup.get('title')?.value,
+        description: this.formGroup.get('description')?.value,
+        completed: false,
+        id: Date.now(),
+      };
 
-      console.log(this.formGroup.value);
-      this.formGroup.reset();
+      this.newTask.emit(newTask);
+      this.cancel();
     }
   }
 

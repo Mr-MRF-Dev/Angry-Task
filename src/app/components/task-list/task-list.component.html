@@ -5,7 +5,7 @@
 >
   <p-toast position="bottom-right" />
 
-  <app-add-task-dialog />
+  <app-add-task-dialog (newTask)="newTaskHandler($event)" />
 
   <div class="flex h-20 flex-grow flex-col overflow-y-auto">
     @for (task of tasks; track task.id) {

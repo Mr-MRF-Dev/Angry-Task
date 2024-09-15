@@ -80,4 +80,14 @@ export class TaskListComponent {
       life: 3000,
     });
   }
+
+  newTaskHandler(task: Task) {
+    this.tasks.push(task);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Task Added',
+      detail: `task '${task.title}' has been added`,
+      life: 3000,
+    });
+  }
 }
