@@ -2,16 +2,21 @@ import { Component } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { Task } from '../../models/task';
 import { NgForOf } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
 import { TaskItemComponent } from '../task-item/task-item.component';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgForOf, CardModule, TaskItemComponent],
+  imports: [NgForOf, ToastModule, CardModule, TaskItemComponent],
+  providers: [MessageService],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
+  constructor(private messageService: MessageService) {}
+
   tasks: Task[] = [
     { id: 1, title: 'Buy milk', completed: false, description: 'some info' },
     { id: 2, title: 'Buy bread', completed: true },
@@ -56,6 +61,13 @@ export class TaskListComponent {
   ];
 
   deleteTaskHandler(id: Task['id']) {
+    const targetTask = this.tasks.find((task) => task.id === id);
     this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Task Deleted',
+      detail: `task '${targetTask?.title}' has been deleted`,
+      life: 3000,
+    });
   }
 }
