@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../../models/task';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +24,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 })
 export class TaskItemComponent implements OnInit {
   @Input() task!: Task;
+  @Output() deleteTask = new EventEmitter<Task['id']>();
+
   items: MenuItem[] | undefined;
 
   constructor(private confirmationService: ConfirmationService) {}
@@ -57,16 +59,12 @@ export class TaskItemComponent implements OnInit {
       },
 
       accept: () => {
-        this.deleteTask();
+        this.deleteTask.emit(this.task.id);
       },
     });
   }
 
   editTask() {
     console.log('Edit Task');
-  }
-
-  deleteTask() {
-    console.log('Delete Task');
   }
 }

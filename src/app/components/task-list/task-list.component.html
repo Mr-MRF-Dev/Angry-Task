@@ -2,6 +2,10 @@
   <!-- <p>create new task</p> -->
 
   <div class="flex h-full flex-col overflow-y-auto">
-    <app-task-item *ngFor="let task of tasks" [task]="task" />
+    <app-task-item
+      *ngFor="let task of tasks"
+      [task]="task"
+      (deleteTask)="deleteTaskHandler($event)"
+    />
   </div>
 </p-card>

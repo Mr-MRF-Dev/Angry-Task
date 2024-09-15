@@ -54,4 +54,8 @@ export class TaskListComponent {
     { id: 39, title: 'Buy oatmeal', completed: false },
     { id: 40, title: 'Buy tea bags', completed: true },
   ];
+
+  deleteTaskHandler(id: Task['id']) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
 }
