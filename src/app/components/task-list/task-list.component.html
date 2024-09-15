@@ -1,8 +1,13 @@
-<p-card header="TaskList Name" subheader="SubTitle" styleClass="!w-80 !h-full">
+<p-card
+  [header]="listTitle"
+  [subheader]="listSubTitle"
+  styleClass="!w-80 !h-full"
+>
   <p-toast position="bottom-right" />
-  <!-- <p>create new task</p> -->
 
-  <div class="flex h-full flex-col overflow-y-auto">
+  <app-add-task-dialog />
+
+  <div class="flex h-20 flex-grow flex-col overflow-y-auto">
     @for (task of tasks; track task.id) {
       <app-task-item [task]="task" (deleteTask)="deleteTaskHandler($event)" />
     }

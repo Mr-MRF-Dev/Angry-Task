@@ -4,17 +4,28 @@ import { Task } from '../../models/task';
 import { ToastModule } from 'primeng/toast';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [ToastModule, CardModule, TaskItemComponent],
+  imports: [
+    ToastModule,
+    CardModule,
+    ButtonModule,
+    TaskItemComponent,
+    AddTaskDialogComponent,
+  ],
   providers: [MessageService],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
   constructor(private messageService: MessageService) {}
+
+  listTitle = 'List Name';
+  listSubTitle = 'List Sub title';
 
   tasks: Task[] = [
     { id: 1, title: 'Buy milk', completed: false, description: 'some info' },

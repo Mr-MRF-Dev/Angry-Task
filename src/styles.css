@@ -20,8 +20,11 @@ body {
 }
 
 .p-card-content {
-  height: 20rem;
+  height: 10rem;
   flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
 }
 
 app-root {
