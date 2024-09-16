@@ -1,8 +1,4 @@
-<p-card
-  [header]="listTitle"
-  [subheader]="listSubTitle"
-  styleClass="!w-80 !h-full"
->
+<p-card [header]="title" [subheader]="subTitle" styleClass="!w-80 !h-full">
   <p-toast position="bottom-right" />
 
   <app-add-task-dialog (newTask)="newTaskHandler($event)" />

@@ -1,12 +1,9 @@
 <app-dashboard-layout>
   <div class="flex h-full gap-4 overflow-x-auto overscroll-x-contain p-4">
-    <app-add-task-list-dialog />
+    @for (list of lists; track list.title) {
+      <app-task-list [title]="list.title" [subTitle]="list.description" />
+    }
 
-    <app-task-list />
-    <app-task-list />
-    <app-task-list />
-    <app-task-list />
-    <app-task-list />
-    <app-task-list />
+    <app-add-task-list-dialog />
   </div>
 </app-dashboard-layout>
