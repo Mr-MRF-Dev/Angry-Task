@@ -1,0 +1,55 @@
+name: deploy page
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+      name: Build 🛠
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout 🛎️
+          uses: actions/checkout@v4
+
+        - name: Setup Node 📝
+          uses: actions/setup-node@v1
+          with:
+            node-version: '20.x'
+
+        - name: Install Dependencies 🛠
+          run: npm ci
+
+        - name: Build 💢
+          run: npm run build
+  
+        - name: Upload Build
+          if: success()
+          uses: actions/upload-artifact@v1
+          with:
+              name: deploy_dist
+              path: build
+
+  deploy:
+    needs:
+      - build
+    name: Deploy 🚀
+    runs-on: ubuntu-latest
+    
+    steps: 
+      - name: Download Build
+        uses: actions/download-artifact@v1
+        with:
+            name: deploy_dist
+            
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: deploy_dist
