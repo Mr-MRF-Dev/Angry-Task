@@ -82,7 +82,7 @@ export class TaskListComponent {
   }
 
   newTaskHandler(task: Task) {
-    this.tasks.push(task);
+    this.tasks = [task, ...this.tasks];
     this.messageService.add({
       severity: 'success',
       summary: 'Task Added',
