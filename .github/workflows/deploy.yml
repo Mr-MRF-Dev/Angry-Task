@@ -1,4 +1,4 @@
-name: Deploy GitHub Page
+name: Release & Deploy GitHub Page
 
 on:
   push:
@@ -6,7 +6,17 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
+  release:
+    name: Release Project 📚
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+      - name: Create Release ⭐
+        uses: softprops/action-gh-release@v2
+
   build:
+    needs: release
     name: Build 🛠
     runs-on: ubuntu-latest
     steps:
