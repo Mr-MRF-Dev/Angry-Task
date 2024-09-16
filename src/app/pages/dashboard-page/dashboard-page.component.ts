@@ -19,17 +19,10 @@ export class DashboardPageComponent implements OnInit {
   lists: TaskList[] = [];
 
   ngOnInit() {
-    this.lists = [
-      {
-        title: 'List 1',
-        description: 'sub title',
-      },
-      {
-        title: 'List 2',
-        description: 'sub title',
-      },
-    ];
+    this.lists = [];
   }
 
-  // addNewListHandler(newList: TaskList) {}
+  addNewListHandler(newList: TaskList) {
+    this.lists.push(newList);
+  }
 }

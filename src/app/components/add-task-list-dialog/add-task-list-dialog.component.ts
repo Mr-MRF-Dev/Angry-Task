@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,6 +8,7 @@ import {
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { TaskList } from '../../models/list';
 
 @Component({
   selector: 'app-add-task-list-dialog',
@@ -17,6 +18,7 @@ import { InputTextModule } from 'primeng/inputtext';
   styleUrl: './add-task-list-dialog.component.css',
 })
 export class AddTaskListDialogComponent {
+  @Output() newList = new EventEmitter<TaskList>();
   visible: boolean = false;
   formGroup!: FormGroup;
 
@@ -31,6 +33,7 @@ export class AddTaskListDialogComponent {
 
   submit() {
     if (this.formGroup.valid) {
+      this.newList.emit(this.formGroup.value);
       this.cancel();
     }
   }
