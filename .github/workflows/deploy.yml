@@ -28,7 +28,7 @@ jobs:
         if: success()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/
+          path: dist/angry-task/browser
 
   deploy:
     needs: build
