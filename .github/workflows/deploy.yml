@@ -29,12 +29,12 @@ jobs:
         - name: Build 💢
           run: npm run build
   
-        - name: Upload Build
+        - name: Upload Build 🔃
           if: success()
           uses: actions/upload-artifact@v4
           with:
               name: deploy_dist
-              path: build
+              path: dist/angry-task
 
   deploy:
     needs:
