@@ -10,11 +10,9 @@ changelog:
       labels:
         - enhancement
         - feature
-        - feat
     - title: Bug fixes 🐛
       labels:
         - bug
-        - fix
     - title: Other Changes 🔄
       labels:
         - "*"
