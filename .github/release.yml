@@ -6,9 +6,11 @@ changelog:
     authors:
       - octocat
   categories:
+    - title: New Version Released ✨
+      labels:
+        - version
     - title: Exciting New Features 🎉
       labels:
-        - enhancement
         - feature
     - title: Bug fixes 🐛
       labels:
