@@ -13,7 +13,7 @@ import { usePreset, updatePrimaryPalette } from 'primeng/themes';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'Angry-Task';
+  title = 'Angry Task';
   constructor(private config: PrimeNGConfig) {
     this.config.theme.set({
       preset: Aura,
