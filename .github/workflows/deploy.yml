@@ -37,7 +37,7 @@ jobs:
         run: npm ci
 
       - name: Build 💢
-        run: npm run build -- -c production --base-href "https://mr-mrf-dev.github.io/Angry-Task/"
+        run: npm run build:prod
 
       - name: Upload Build 🔃
         if: success()

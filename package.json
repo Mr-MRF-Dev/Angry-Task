@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build -c production --base-href 'https://mr-mrf-dev.github.io/Angry-Task/'",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prettier": "prettier --ignore-unknown --write",
