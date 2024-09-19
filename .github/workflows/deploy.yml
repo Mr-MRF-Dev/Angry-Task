@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    needs: release
     name: Build 🛠
     runs-on: ubuntu-latest
     steps:
@@ -54,6 +53,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   release:
+    needs: deploy
     name: Release Project 📚
     permissions:
       contents: write
