@@ -21,7 +21,7 @@ jobs:
       - name: Install Dependencies ⚙
         run: npm ci
 
-      - name: Test
+      - name: Test 🧪
         run: npm run test:ci
 
       - name: Build 💢
@@ -54,7 +54,7 @@ jobs:
 
   release:
     needs: deploy
-    name: Release Project 📚
+    name: Release 📚
     permissions:
       contents: write
 
