@@ -8,7 +8,7 @@ import {
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import { TaskList } from '../../models/list';
+import { TaskList } from '../../models/task_list';
 
 @Component({
   selector: 'app-add-task-list-dialog',
@@ -24,6 +24,7 @@ export class AddTaskListDialogComponent {
 
   ngOnInit() {
     this.formGroup = new FormGroup({
+      id: new FormControl<number>(Date.now()),
       title: new FormControl<string | undefined>(undefined, [
         Validators.required,
       ]),

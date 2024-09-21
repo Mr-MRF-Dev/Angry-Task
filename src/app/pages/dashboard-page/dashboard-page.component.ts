@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardLayoutComponent } from '../../layouts/dashboard-layout/dashboard-layout.component';
 import { TaskListComponent } from '../../components/task-list/task-list.component';
 import { AddTaskListDialogComponent } from '../../components/add-task-list-dialog/add-task-list-dialog.component';
-import { TaskList } from '../../models/list';
+import { TaskList } from '../../models/task_list';
 
 @Component({
   selector: 'app-dashboard-page',
