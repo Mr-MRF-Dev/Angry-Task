@@ -20,7 +20,7 @@ import { Task } from '../../models/task';
 export class EditTaskDialogComponent implements OnInit {
   @Input() task!: Task;
 
-  @Input() visible: boolean = false;
+  @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
 
   formGroup!: FormGroup;

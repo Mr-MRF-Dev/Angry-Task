@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -17,9 +17,9 @@ import { TaskList } from '../../models/task_list';
   templateUrl: './add-task-list-dialog.component.html',
   styleUrl: './add-task-list-dialog.component.css',
 })
-export class AddTaskListDialogComponent {
+export class AddTaskListDialogComponent implements OnInit {
   @Output() newList = new EventEmitter<TaskList>();
-  visible: boolean = false;
+  visible = false;
   formGroup!: FormGroup;
 
   ngOnInit() {

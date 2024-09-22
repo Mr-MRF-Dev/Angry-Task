@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { Aura } from 'primeng/themes/aura';
-import { Lara } from 'primeng/themes/lara';
-import { usePreset, updatePrimaryPalette } from 'primeng/themes';
+// import { Lara } from 'primeng/themes/lara';
+// import { usePreset, updatePrimaryPalette } from 'primeng/themes';
 
 @Component({
   selector: 'app-root',

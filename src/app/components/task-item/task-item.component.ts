@@ -25,7 +25,7 @@ export class TaskItemComponent implements OnInit {
   @Input() task!: Task;
   @Output() deleteTask = new EventEmitter<Task['id']>();
 
-  showEditDialog: boolean = false;
+  showEditDialog = false;
   items: MenuItem[] | undefined;
 
   ngOnInit() {

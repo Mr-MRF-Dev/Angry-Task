@@ -20,7 +20,7 @@ import { Task } from '../../models/task';
 export class AddTaskDialogComponent implements OnInit {
   @Output() newTask = new EventEmitter<Task>();
 
-  visible: boolean = false;
+  visible = false;
   formGroup!: FormGroup;
 
   ngOnInit() {
