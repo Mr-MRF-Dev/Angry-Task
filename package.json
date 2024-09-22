@@ -11,7 +11,8 @@
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --source-map=false",
     "prettier": "prettier --ignore-unknown --write",
-    "prettier-check": "prettier --ignore-unknown --check"
+    "prettier-check": "prettier --ignore-unknown --check",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +36,9 @@
     "@angular/cli": "^18.1.2",
     "@angular/compiler-cli": "^18.1.0",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "18.3.1",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.9.1",
     "husky": "^9.1.5",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -48,7 +51,8 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwindcss": "^3.4.10",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "typescript-eslint": "8.2.0"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write"
