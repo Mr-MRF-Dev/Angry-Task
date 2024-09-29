@@ -1,6 +1,6 @@
 {
   "name": "angry-task",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "prepare": "husky",
     "ng": "ng",
