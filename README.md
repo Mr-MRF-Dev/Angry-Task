@@ -8,7 +8,13 @@
 [![GitHub package.json prod dependency version](https://img.shields.io/github/package-json/dependency-version/mr-mrf-dev/angry-task/primeng)](https://v18.primeng.org/)
 [![GitHub License](https://img.shields.io/github/license/mr-mrf-dev/angry-task)](/LICENSE)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+![screenshot](/images/screenshot.png)
+
+AngryTask is a simple task manager that allows you to create, edit, and delete tasks. It is built using Angular and PrimeNG. This project was created to help me learn Angular and PrimeNG. The project is hosted on GitHub Pages and can be accessed [here](https://mr-mrf-dev.github.io/Angry-Task/).
+
+## 🚀 Demo
+
+Check out the live demo [here](https://mr-mrf-dev.github.io/Angry-Task/)!
 
 ## Development server
 
