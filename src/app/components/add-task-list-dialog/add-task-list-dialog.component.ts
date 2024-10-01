@@ -41,9 +41,8 @@ export class AddTaskListDialogComponent implements OnInit {
         tasks: [],
       };
 
-      if (this.TaskListHandler.createTaskList(newTaskList)) {
-        this.cancel();
-      }
+      this.TaskListHandler.createTaskList(newTaskList);
+      this.cancel();
     }
   }
 
