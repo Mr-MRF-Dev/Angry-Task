@@ -1,7 +1,7 @@
 <app-dashboard-layout>
   <div class="flex h-full gap-4 overflow-x-auto overscroll-x-contain p-4">
     @for (list of taskLists; track list.id) {
-      <app-task-list [title]="list.title" [subTitle]="list.description" />
+      <app-task-list [self]="list" />
     }
 
     <app-add-task-list-dialog (newList)="addNewListHandler($event)" />

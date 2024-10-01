@@ -29,6 +29,7 @@ export class AddTaskListDialogComponent implements OnInit {
         Validators.required,
       ]),
       description: new FormControl<string | undefined>(undefined),
+      tasks: new FormControl<TaskList['tasks']>([]),
     });
   }
 

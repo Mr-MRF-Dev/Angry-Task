@@ -6,6 +6,7 @@ import { TaskItemComponent } from '../task-item/task-item.component';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
+import { TaskList } from '../../models/task_list';
 
 @Component({
   selector: 'app-task-list',
@@ -24,14 +25,11 @@ import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.compo
 export class TaskListComponent {
   constructor(private messageService: MessageService) {}
 
-  @Input() title!: string;
-  @Input() subTitle!: string | undefined;
-
-  tasks: Task[] = [];
+  @Input() self!: TaskList;
 
   deleteTaskHandler(id: Task['id']) {
-    const targetTask = this.tasks.find((task) => task.id === id);
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+    const targetTask = this.self.tasks.find((task) => task.id === id);
+    this.self.tasks = this.self.tasks.filter((task) => task.id !== id);
     this.messageService.add({
       severity: 'info',
       summary: 'Task Deleted',
@@ -41,7 +39,7 @@ export class TaskListComponent {
   }
 
   newTaskHandler(task: Task) {
-    this.tasks = [task, ...this.tasks];
+    this.self.tasks = [task, ...this.self.tasks];
     this.messageService.add({
       severity: 'success',
       summary: 'Task Added',
