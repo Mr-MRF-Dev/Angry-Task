@@ -25,8 +25,4 @@ export class DashboardPageComponent implements OnInit {
       this.taskLists = taskLists;
     });
   }
-
-  addNewListHandler(newList: TaskList) {
-    this.TaskListHandler.createTaskList(newList);
-  }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { TaskList } from '../../models/task_list';
+import { TaskListHandlerService } from '../../services/task-list-handler.service';
 
 @Component({
   selector: 'app-add-task-list-dialog',
@@ -18,9 +19,9 @@ import { TaskList } from '../../models/task_list';
   styleUrl: './add-task-list-dialog.component.css',
 })
 export class AddTaskListDialogComponent implements OnInit {
-  @Output() newList = new EventEmitter<TaskList>();
-  visible = false;
-  formGroup!: FormGroup;
+  protected visible = false;
+  protected formGroup!: FormGroup;
+  private TaskListHandler = inject(TaskListHandlerService);
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -40,8 +41,9 @@ export class AddTaskListDialogComponent implements OnInit {
         tasks: [],
       };
 
-      this.newList.emit(newTaskList);
-      this.cancel();
+      if (this.TaskListHandler.createTaskList(newTaskList)) {
+        this.cancel();
+      }
     }
   }
 

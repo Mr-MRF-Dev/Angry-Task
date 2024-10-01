@@ -17,9 +17,10 @@ export class TaskListHandlerService {
     return this.TaskListsObs.asObservable();
   }
 
-  createTaskList(taskList: TaskList) {
+  createTaskList(taskList: TaskList): boolean {
     this.taskLists.push(taskList);
     this.TaskListsObs.next(this.taskLists);
+    return true;
   }
 
   removeTaskList(taskList: TaskList) {
