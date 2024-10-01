@@ -24,18 +24,23 @@ export class AddTaskListDialogComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = new FormGroup({
-      id: new FormControl<number>(Date.now()),
       title: new FormControl<string | undefined>(undefined, [
         Validators.required,
       ]),
       description: new FormControl<string | undefined>(undefined),
-      tasks: new FormControl<TaskList['tasks']>([]),
     });
   }
 
   submit() {
     if (this.formGroup.valid) {
-      this.newList.emit(this.formGroup.value);
+      const newTaskList: TaskList = {
+        id: Date.now(),
+        title: this.formGroup.value.title,
+        description: this.formGroup.value.description,
+        tasks: [],
+      };
+
+      this.newList.emit(newTaskList);
       this.cancel();
     }
   }
