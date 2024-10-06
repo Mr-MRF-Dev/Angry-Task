@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -9,8 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Task } from '../../models/task';
-import { TaskList } from '../../models/task_list';
 import { TaskListHandlerService } from '../../services/task-list-handler.service';
+import { NewTaskHandlerService } from '../../services/new-task-handler.service';
+import { TaskList } from '../../models/task_list';
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -20,8 +21,9 @@ import { TaskListHandlerService } from '../../services/task-list-handler.service
   styleUrl: './add-task-dialog.component.css',
 })
 export class AddTaskDialogComponent implements OnInit {
-  @Input() taskListId!: TaskList['id'];
   private taskListHandlerService = inject(TaskListHandlerService);
+  private newTaskHandlerService = inject(NewTaskHandlerService);
+  private taskListId!: TaskList['id'];
 
   visible = false;
   formGroup!: FormGroup;
@@ -30,6 +32,12 @@ export class AddTaskDialogComponent implements OnInit {
     this.formGroup = new FormGroup({
       title: new FormControl<Task['title']>('', Validators.required),
       description: new FormControl<Task['description'] | undefined>(undefined),
+    });
+
+    this.newTaskHandlerService.getObservable().subscribe((taskListId) => {
+      this.taskListId = taskListId;
+      this.formGroup.reset();
+      this.visible = true;
     });
   }
 
@@ -45,10 +53,6 @@ export class AddTaskDialogComponent implements OnInit {
       this.taskListHandlerService.createTask(this.taskListId, newTask);
       this.cancel();
     }
-  }
-
-  showDialog() {
-    this.visible = true;
   }
 
   cancel() {

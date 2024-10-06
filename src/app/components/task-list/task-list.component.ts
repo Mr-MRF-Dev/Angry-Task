@@ -1,25 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { ButtonModule } from 'primeng/button';
-import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { TaskList } from '../../models/task_list';
-import { TaskListHandlerService } from '../../services/task-list-handler.service';
+import { NewTaskHandlerService } from '../../services/new-task-handler.service';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [
-    CardModule,
-    ButtonModule,
-    TaskItemComponent,
-    AddTaskDialogComponent,
-  ],
+  imports: [CardModule, ButtonModule, TaskItemComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
-  constructor(private taskListHandlerService: TaskListHandlerService) {}
-
   @Input() self!: TaskList;
+
+  private newTaskHandlerService = inject(NewTaskHandlerService);
+
+  createNewTask() {
+    this.newTaskHandlerService.requestNewTask(this.self.id);
+  }
 }

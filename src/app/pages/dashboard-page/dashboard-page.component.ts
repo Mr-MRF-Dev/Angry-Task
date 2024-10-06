@@ -4,6 +4,7 @@ import { TaskListComponent } from '../../components/task-list/task-list.componen
 import { AddTaskListDialogComponent } from '../../components/add-task-list-dialog/add-task-list-dialog.component';
 import { TaskList } from '../../models/task_list';
 import { TaskListHandlerService } from '../../services/task-list-handler.service';
+import { AddTaskDialogComponent } from '../../components/add-task-dialog/add-task-dialog.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -11,6 +12,7 @@ import { TaskListHandlerService } from '../../services/task-list-handler.service
   imports: [
     DashboardLayoutComponent,
     TaskListComponent,
+    AddTaskDialogComponent,
     AddTaskListDialogComponent,
   ],
   templateUrl: './dashboard-page.component.html',
