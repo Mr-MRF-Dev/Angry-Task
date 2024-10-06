@@ -7,6 +7,7 @@ import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { TaskList } from '../../models/task_list';
+import { TaskListHandlerService } from '../../services/task-list-handler.service';
 
 @Component({
   selector: 'app-task-list',
@@ -23,23 +24,27 @@ import { TaskList } from '../../models/task_list';
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private taskListHandlerService: TaskListHandlerService,
+  ) {}
 
   @Input() self!: TaskList;
 
   deleteTaskHandler(id: Task['id']) {
-    const targetTask = this.self.tasks.find((task) => task.id === id);
+    this.taskListHandlerService.deleteTask(this.self.id, id);
     this.self.tasks = this.self.tasks.filter((task) => task.id !== id);
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Task Deleted',
-      detail: `task '${targetTask?.title}' has been deleted`,
-      life: 3000,
-    });
+    // this.messageService.add({
+    //   severity: 'info',
+    //   summary: 'Task Deleted',
+    //   detail: `task '${targetTask?.title}' has been deleted`,
+    //   life: 3000,
+    // });
   }
 
   newTaskHandler(task: Task) {
-    this.self.tasks = [task, ...this.self.tasks];
+    this.taskListHandlerService.createTask(this.self.id, task);
+
     this.messageService.add({
       severity: 'success',
       summary: 'Task Added',

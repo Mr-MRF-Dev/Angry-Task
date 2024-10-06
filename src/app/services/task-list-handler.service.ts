@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TaskList } from '../models/task_list';
 import { LocalStorageService } from './local-storage.service';
+import { Task } from '../models/task';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,20 @@ export class TaskListHandlerService {
 
   removeTaskList(taskList: TaskList) {
     this.taskLists = this.taskLists.filter((t) => t.id !== taskList.id);
+    this.TaskListsObs.next(this.taskLists);
+  }
+
+  createTask(taskListId: TaskList['id'], task: Task) {
+    const targetTaskList = this.taskLists.find((t) => t.id === taskListId);
+    targetTaskList?.tasks.push(task);
+    this.TaskListsObs.next(this.taskLists);
+  }
+
+  deleteTask(taskListId: TaskList['id'], taskId: Task['id']) {
+    const targetTaskList = this.taskLists.find((t) => t.id === taskListId);
+    targetTaskList!.tasks = targetTaskList!.tasks.filter(
+      (t) => t.id !== taskId,
+    );
     this.TaskListsObs.next(this.taskLists);
   }
 }
