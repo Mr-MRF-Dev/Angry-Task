@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { Task } from '../../models/task';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,8 @@ import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 import { PanelModule } from 'primeng/panel';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
+import { TaskList } from '../../models/task_list';
+import { TaskListHandlerService } from '../../services/task-list-handler.service';
 @Component({
   selector: 'app-task-item',
   standalone: true,
@@ -23,10 +25,12 @@ import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.co
 })
 export class TaskItemComponent implements OnInit {
   @Input() task!: Task;
-  @Output() deleteTask = new EventEmitter<Task['id']>();
+
+  @Input() taskListId!: TaskList['id'];
+  private taskListHandlerService = inject(TaskListHandlerService);
 
   showEditDialog = false;
-  items: MenuItem[] | undefined;
+  items!: MenuItem[];
 
   ngOnInit() {
     this.items = [
@@ -42,9 +46,15 @@ export class TaskItemComponent implements OnInit {
         label: 'Delete',
         icon: 'pi pi-trash',
         command: () => {
-          this.deleteTask.emit(this.task.id);
+          this.taskListHandlerService.deleteTask(this.taskListId, this.task.id);
         },
       },
     ];
+  }
+
+  editTaskHandler(task: Task) {
+    this.task = task;
+    this.taskListHandlerService.editTask(this.taskListId, this.task);
+    this.showEditDialog = false;
   }
 }

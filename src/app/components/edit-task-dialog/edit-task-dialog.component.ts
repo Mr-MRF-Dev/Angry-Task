@@ -19,6 +19,7 @@ import { Task } from '../../models/task';
 })
 export class EditTaskDialogComponent implements OnInit {
   @Input() task!: Task;
+  @Output() taskChange = new EventEmitter<Task>();
 
   @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
@@ -41,6 +42,7 @@ export class EditTaskDialogComponent implements OnInit {
     if (this.formGroup.valid) {
       this.task.title = this.formGroup.get('title')?.value;
       this.task.description = this.formGroup.get('description')?.value;
+      this.taskChange.emit(this.task);
       this.cancel();
     }
   }

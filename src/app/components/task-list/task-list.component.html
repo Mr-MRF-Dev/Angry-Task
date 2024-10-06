@@ -1,11 +1,21 @@
-<p-card [header]="title" [subheader]="subTitle" styleClass="!w-80 !h-full">
-  <p-toast position="bottom-right" />
-
-  <app-add-task-dialog (newTask)="newTaskHandler($event)" />
+<p-card
+  [header]="self.title"
+  [subheader]="self.description"
+  styleClass="!w-80 !h-full"
+>
+  <p-button
+    styleClass="my-2"
+    label="Create New Task"
+    icon="pi pi-plus"
+    size="small"
+    [rounded]="true"
+    [outlined]="true"
+    (click)="createNewTask()"
+  />
 
   <div class="flex h-20 flex-grow flex-col overflow-y-auto">
-    @for (task of tasks; track task.id) {
-      <app-task-item [task]="task" (deleteTask)="deleteTaskHandler($event)" />
+    @for (task of self.tasks; track task.id) {
+      <app-task-item [task]="task" [taskListId]="self.id" />
     }
   </div>
 </p-card>

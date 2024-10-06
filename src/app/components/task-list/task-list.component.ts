@@ -1,52 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
-import { Task } from '../../models/task';
-import { ToastModule } from 'primeng/toast';
 import { TaskItemComponent } from '../task-item/task-item.component';
-import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
-import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
+import { TaskList } from '../../models/task_list';
+import { NewTaskHandlerService } from '../../services/new-task-handler.service';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [
-    ToastModule,
-    CardModule,
-    ButtonModule,
-    TaskItemComponent,
-    AddTaskDialogComponent,
-  ],
-  providers: [MessageService],
+  imports: [CardModule, ButtonModule, TaskItemComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
-  constructor(private messageService: MessageService) {}
+  @Input() self!: TaskList;
 
-  @Input() title!: string;
-  @Input() subTitle!: string | undefined;
+  private newTaskHandlerService = inject(NewTaskHandlerService);
 
-  tasks: Task[] = [];
-
-  deleteTaskHandler(id: Task['id']) {
-    const targetTask = this.tasks.find((task) => task.id === id);
-    this.tasks = this.tasks.filter((task) => task.id !== id);
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Task Deleted',
-      detail: `task '${targetTask?.title}' has been deleted`,
-      life: 3000,
-    });
-  }
-
-  newTaskHandler(task: Task) {
-    this.tasks = [task, ...this.tasks];
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Task Added',
-      detail: `task '${task.title}' has been added`,
-      life: 3000,
-    });
+  createNewTask() {
+    this.newTaskHandlerService.requestNewTask(this.self.id);
   }
 }
