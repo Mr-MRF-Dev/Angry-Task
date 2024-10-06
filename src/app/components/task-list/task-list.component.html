@@ -7,7 +7,11 @@
 
   <div class="flex h-20 flex-grow flex-col overflow-y-auto">
     @for (task of self.tasks; track task.id) {
-      <app-task-item [task]="task" (deleteTask)="deleteTaskHandler($event)" />
+      <app-task-item
+        [task]="task"
+        (taskChange)="editTaskHandler($event)"
+        (deleteTask)="deleteTaskHandler($event)"
+      />
     }
   </div>
 </p-card>

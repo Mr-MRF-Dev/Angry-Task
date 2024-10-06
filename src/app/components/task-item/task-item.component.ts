@@ -23,6 +23,8 @@ import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.co
 })
 export class TaskItemComponent implements OnInit {
   @Input() task!: Task;
+  @Output() taskChange = new EventEmitter<Task>();
+
   @Output() deleteTask = new EventEmitter<Task['id']>();
 
   showEditDialog = false;
@@ -46,5 +48,11 @@ export class TaskItemComponent implements OnInit {
         },
       },
     ];
+  }
+
+  editTaskHandler(task: Task) {
+    this.task = task;
+    this.taskChange.emit(task);
+    this.showEditDialog = false;
   }
 }

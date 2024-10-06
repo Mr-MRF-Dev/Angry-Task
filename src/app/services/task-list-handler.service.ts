@@ -29,7 +29,7 @@ export class TaskListHandlerService {
     this.TaskListsObs.next(this.taskLists);
   }
 
-  removeTaskList(taskList: TaskList) {
+  deleteTaskList(taskList: TaskList) {
     this.taskLists = this.taskLists.filter((t) => t.id !== taskList.id);
     this.TaskListsObs.next(this.taskLists);
   }
@@ -45,6 +45,15 @@ export class TaskListHandlerService {
     targetTaskList!.tasks = targetTaskList!.tasks.filter(
       (t) => t.id !== taskId,
     );
+    this.TaskListsObs.next(this.taskLists);
+  }
+
+  editTask(taskListId: TaskList['id'], task: Task) {
+    const targetTaskList = this.taskLists.find((t) => t.id === taskListId);
+    const taskIndex = targetTaskList!.tasks.findIndex((t) => t.id === task.id);
+    if (taskIndex !== -1) {
+      targetTaskList!.tasks[taskIndex] = task;
+    }
     this.TaskListsObs.next(this.taskLists);
   }
 }

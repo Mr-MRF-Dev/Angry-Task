@@ -31,4 +31,8 @@ export class TaskListComponent {
   newTaskHandler(task: Task) {
     this.taskListHandlerService.createTask(this.self.id, task);
   }
+
+  editTaskHandler(task: Task) {
+    this.taskListHandlerService.editTask(this.self.id, task);
+  }
 }
