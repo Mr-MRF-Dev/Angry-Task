@@ -9,7 +9,7 @@
     "build:prod": "ng build -c production --base-href 'https://mr-mrf-dev.github.io/Angry-Task/'",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --source-map=false",
+    "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadless --source-map=false",
     "prettier": "prettier --ignore-unknown --write",
     "prettier-check": "prettier --ignore-unknown --check",
     "lint": "ng lint"
