@@ -3,15 +3,11 @@
   [subheader]="self.description"
   styleClass="!w-80 !h-full"
 >
-  <app-add-task-dialog (newTask)="newTaskHandler($event)" />
+  <app-add-task-dialog [taskListId]="self.id" />
 
   <div class="flex h-20 flex-grow flex-col overflow-y-auto">
     @for (task of self.tasks; track task.id) {
-      <app-task-item
-        [task]="task"
-        (taskChange)="editTaskHandler($event)"
-        (deleteTask)="deleteTaskHandler($event)"
-      />
+      <app-task-item [task]="task" [taskListId]="self.id" />
     }
   </div>
 </p-card>
