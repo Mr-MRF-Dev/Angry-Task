@@ -6,30 +6,23 @@ import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 import { PanelModule } from 'primeng/panel';
-import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { TaskList } from '../../models/task_list';
 import { TaskListHandlerService } from '../../services/task-list-handler.service';
+import { EditTaskHandlerService } from '../../services/edit-task-handler.service';
 @Component({
   selector: 'app-task-item',
   standalone: true,
-  imports: [
-    PanelModule,
-    FormsModule,
-    ButtonModule,
-    CheckboxModule,
-    MenuModule,
-    EditTaskDialogComponent,
-  ],
+  imports: [PanelModule, FormsModule, ButtonModule, CheckboxModule, MenuModule],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css',
 })
 export class TaskItemComponent implements OnInit {
-  @Input() task!: Task;
-
-  @Input() taskListId!: TaskList['id'];
+  private editTaskHandlerService = inject(EditTaskHandlerService);
   private taskListHandlerService = inject(TaskListHandlerService);
 
-  showEditDialog = false;
+  @Input() task!: Task;
+  @Input() taskListId!: TaskList['id'];
+
   items!: MenuItem[];
 
   ngOnInit() {
@@ -38,7 +31,10 @@ export class TaskItemComponent implements OnInit {
         label: 'Edit',
         icon: 'pi pi-pencil',
         command: () => {
-          this.showEditDialog = true;
+          this.editTaskHandlerService.requestEditTask(
+            this.taskListId,
+            this.task,
+          );
         },
       },
 
@@ -50,11 +46,5 @@ export class TaskItemComponent implements OnInit {
         },
       },
     ];
-  }
-
-  editTaskHandler(task: Task) {
-    this.task = task;
-    this.taskListHandlerService.editTask(this.taskListId, this.task);
-    this.showEditDialog = false;
   }
 }
