@@ -12,11 +12,13 @@ export class TaskListHandlerService {
   TaskListsObs: BehaviorSubject<TaskList[]>;
 
   constructor(private localStorageService: LocalStorageService) {
-    this.taskLists = this.localStorageService.load('taskLists');
+    this.taskLists = this.localStorageService.loadArray(
+      'taskLists',
+    ) as TaskList[];
     this.TaskListsObs = new BehaviorSubject<TaskList[]>(this.taskLists);
 
     this.getTaskLists().subscribe((taskLists) => {
-      this.localStorageService.save('taskLists', taskLists);
+      this.localStorageService.saveArray('taskLists', taskLists);
     });
   }
 
