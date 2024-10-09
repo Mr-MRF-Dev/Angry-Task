@@ -10,7 +10,22 @@ describe('NewTaskHandlerService', () => {
     service = TestBed.inject(NewTaskHandlerService);
   });
 
-  it('should be created', () => {
+  it('SHOULD be created WHEN the service is instantiated', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('SHOULD return a observable WHEN getObservable is called', () => {
+    expect(service.getObservable()).toBeTruthy();
+  });
+
+  it('SHOULD emit task creation request WHEN requestNewTask is called', (done) => {
+    const taskListId = 123;
+
+    service.getObservable().subscribe((emittedTaskListId) => {
+      expect(emittedTaskListId).toBe(taskListId);
+      done();
+    });
+
+    service.requestNewTask(taskListId);
   });
 });
