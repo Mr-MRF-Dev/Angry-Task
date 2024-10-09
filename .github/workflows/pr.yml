@@ -26,3 +26,8 @@ jobs:
 
       - name: Lint 🧹
         run: npm run lint
+
+      - name: Code Coverage 📊
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
