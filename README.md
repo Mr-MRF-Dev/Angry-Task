@@ -3,6 +3,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/mr-mrf-dev/angry-task)](https://github.com/Mr-MRF-Dev/Angry-Task/releases)
 ![GitHub repo size](https://img.shields.io/github/repo-size/mr-mrf-dev/angry-task)
 [![Release & Deploy GitHub Page](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml/badge.svg)](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml)
+[![codecov](https://codecov.io/github/Mr-MRF-Dev/Angry-Task/graph/badge.svg?token=CIUDK6BFNY)](https://codecov.io/github/Mr-MRF-Dev/Angry-Task)
 [![GitHub deployments](https://img.shields.io/github/deployments/mr-mrf-dev/angry-task/github-pages?label=Deployments)](https://github.com/Mr-MRF-Dev/Angry-Task/deployments)
 [![GitHub package.json dev/peer/optional dependency version](https://img.shields.io/github/package-json/dependency-version/mr-mrf-dev/angry-task/dev/%40angular%2Fcli?label=Angular%20CLI)](https://github.com/angular/angular-cli)
 [![GitHub package.json prod dependency version](https://img.shields.io/github/package-json/dependency-version/mr-mrf-dev/angry-task/primeng)](https://v18.primeng.org/)
