@@ -19,7 +19,7 @@ jobs:
           node-version: "20.x"
 
       - name: Install Dependencies ⚙
-        run: npm i
+        run: npm install
 
       - name: Test 🧪
         run: npm run test:ci
@@ -30,4 +30,5 @@ jobs:
       - name: Code Coverage 📊
         uses: codecov/codecov-action@v4
         with:
+          directory: ./coverage/angry-task
           token: ${{ secrets.CODECOV_TOKEN }}
