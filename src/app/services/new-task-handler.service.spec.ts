@@ -28,4 +28,14 @@ describe('NewTaskHandlerService', () => {
 
     service.requestNewTask(taskListId);
   });
+
+  it('SHOULD call one time the observer WHEN requestNewTask is called', () => {
+    const taskListId = 123;
+    const observer = jasmine.createSpy();
+
+    service.getObservable().subscribe(observer);
+    service.requestNewTask(taskListId);
+
+    expect(observer).toHaveBeenCalledTimes(1);
+  });
 });

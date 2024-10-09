@@ -12,15 +12,15 @@ describe('EditTaskHandlerService', () => {
     service = TestBed.inject(EditTaskHandlerService);
   });
 
-  it('should be created', () => {
+  it('SHOULD be created WHEN the service is instantiated', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return an observable', () => {
+  it('SHOULD return an observable WHEN getObservable is called', () => {
     expect(service.getObservable()).toBeTruthy();
   });
 
-  it('should emit task edit request', (done) => {
+  it('SHOULD emit task edit request WHEN requestEditTask is called', (done) => {
     const taskListId: TaskList['id'] = 123;
     const task: Task = { id: 234, title: 'Test Task', completed: false };
 
@@ -31,5 +31,16 @@ describe('EditTaskHandlerService', () => {
     });
 
     service.requestEditTask(taskListId, task);
+  });
+
+  it('SHOULD call one time the observer WHEN requestEditTask is called', () => {
+    const taskListId: TaskList['id'] = 123;
+    const task: Task = { id: 234, title: 'Test Task', completed: false };
+    const observer = jasmine.createSpy();
+
+    service.getObservable().subscribe(observer);
+    service.requestEditTask(taskListId, task);
+
+    expect(observer).toHaveBeenCalledTimes(1);
   });
 });
