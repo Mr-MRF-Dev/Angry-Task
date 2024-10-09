@@ -1,0 +1,28 @@
+name: Checkout PRs ✨
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  pr:
+    name: Lint & Test 🧪
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node 📝
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - name: Install Dependencies ⚙
+        run: npm i
+
+      - name: Test 🧪
+        run: npm run test:ci
+
+      - name: Lint 🧹
+        run: npm run lint
