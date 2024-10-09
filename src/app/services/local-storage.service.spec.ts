@@ -4,13 +4,15 @@ import { LocalStorageService } from './local-storage.service';
 
 describe('LocalStorageService', () => {
   let service: LocalStorageService;
+  const mockKey = 'key';
+  const mockValue = [{ name: 'qwqw' }, { name: 'wqwq' }];
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(LocalStorageService);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     localStorage.clear();
   });
 
@@ -19,35 +21,24 @@ describe('LocalStorageService', () => {
   });
 
   it('SHOULD save the Array in the local storage WHEN saveArray is called', () => {
-    const key = 'key';
-    const value = [{ name: 'qwqw' }, { name: 'wqwq' }];
+    service.saveArray(mockKey, mockValue);
 
-    service.saveArray(key, value);
-
-    expect(localStorage.getItem(key)).toBe(JSON.stringify(value));
+    expect(localStorage.getItem(mockKey)).toBe(JSON.stringify(mockValue));
   });
 
   it("SHOULD return an empty array WHEN loadArray is called and the key doesn't exist", () => {
-    const key = 'key2';
-
-    expect(service.loadArray(key)).toEqual([]);
+    expect(service.loadArray(mockKey)).toEqual([]);
   });
 
   it('SHOULD return the array from the local storage WHEN loadArray is called and the key exists', () => {
-    const key = 'key3';
-    const value = [{ name: 'qwqw' }, { name: 'wqwq' }];
-
-    localStorage.setItem(key, JSON.stringify(value));
-    expect(service.loadArray(key)).toEqual(value);
+    localStorage.setItem(mockKey, JSON.stringify(mockValue));
+    expect(service.loadArray(mockKey)).toEqual(mockValue);
   });
 
   it('SHOULD remove the item from the local storage WHEN remove is called', () => {
-    const key = 'key4';
-    const value = [{ name: 'qwqw' }, { name: 'wqwq' }];
+    localStorage.setItem(mockKey, JSON.stringify(mockValue));
+    service.remove(mockKey);
 
-    localStorage.setItem(key, JSON.stringify(value));
-    service.remove(key);
-
-    expect(localStorage.getItem(key)).toBeNull();
+    expect(localStorage.getItem(mockKey)).toBeNull();
   });
 });
