@@ -4,6 +4,8 @@ import { TaskList } from '../models/task_list';
 import { LocalStorageService } from './local-storage.service';
 import { Task } from '../models/task';
 
+export const LOCAL_STORAGE_KEY = 'taskLists';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,11 +14,13 @@ export class TaskListHandlerService {
   TaskListsObs: BehaviorSubject<TaskList[]>;
 
   constructor(private localStorageService: LocalStorageService) {
-    this.taskLists = this.localStorageService.load('taskLists');
+    this.taskLists = this.localStorageService.loadArray(
+      LOCAL_STORAGE_KEY,
+    ) as TaskList[];
     this.TaskListsObs = new BehaviorSubject<TaskList[]>(this.taskLists);
 
     this.getTaskLists().subscribe((taskLists) => {
-      this.localStorageService.save('taskLists', taskLists);
+      this.localStorageService.saveArray(LOCAL_STORAGE_KEY, taskLists);
     });
   }
 

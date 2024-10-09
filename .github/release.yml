@@ -12,12 +12,16 @@ changelog:
     - title: Bug fixes 🐛
       labels:
         - bug
+        - fix
     - title: Dependencies 👒
       labels:
         - dependencies
     - title: Documentation 📚
       labels:
         - documentation
+    - title: Tests 🧪
+      labels:
+        - test
     - title: Other Changes 🔄
       labels:
         - "*"
