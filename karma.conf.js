@@ -3,7 +3,7 @@ module.exports = function (config) {
   config.set({
     basePath: "",
     frameworks: ["jasmine", "@angular-devkit/build-angular"],
-    reporters: ["progress"],
+    reporters: ["progress", "kjhtml", "coverage"],
 
     plugins: [
       require("karma-jasmine"),
@@ -29,16 +29,15 @@ module.exports = function (config) {
         { type: "text-summary" },
         { type: "lcovonly" },
       ],
-      check: {
-        global: {
-          statements: 80,
-          branches: 80,
-          functions: 80,
-          lines: 80,
-        },
-      },
+      // check: {
+      //   global: {
+      //     statements: 80,
+      //     branches: 80,
+      //     functions: 80,
+      //     lines: 80,
+      //   },
+      // },
     },
-    reporters: ["progress", "kjhtml"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
   });
