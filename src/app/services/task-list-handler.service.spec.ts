@@ -75,7 +75,7 @@ describe('TaskListHandlerService', () => {
     };
 
     service.createTaskList(mockTaskList);
-    service.deleteTaskList(mockTaskList);
+    service.deleteTaskList(mockTaskList.id);
 
     service.getTaskLists().subscribe((taskLists) => {
       expect(taskLists).toEqual([]);
@@ -159,7 +159,7 @@ describe('TaskListHandlerService', () => {
     };
 
     service.createTaskList(mockTaskList);
-    service.deleteTaskList(mockTaskList);
+    service.deleteTaskList(mockTaskList.id);
 
     expect(localStorage.getItem(LOCAL_STORAGE_KEY)).toBe(JSON.stringify([]));
   });

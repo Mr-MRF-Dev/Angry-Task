@@ -33,8 +33,8 @@ export class TaskListHandlerService {
     this.TaskListsObs.next(this.taskLists);
   }
 
-  deleteTaskList(taskList: TaskList) {
-    this.taskLists = this.taskLists.filter((t) => t.id !== taskList.id);
+  deleteTaskList(taskListId: TaskList['id']) {
+    this.taskLists = this.taskLists.filter((t) => t.id !== taskListId);
     this.TaskListsObs.next(this.taskLists);
   }
 
