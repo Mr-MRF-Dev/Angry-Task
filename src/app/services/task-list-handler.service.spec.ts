@@ -7,8 +7,9 @@ import { TaskList } from '../models/task_list';
 import { Task } from '../models/task';
 import { LocalStorageService } from './local-storage.service';
 
-describe('TaskListHandlerService', () => {
+describe('TaskListHandlerService: Functionality', () => {
   let service: TaskListHandlerService;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [LocalStorageService],
@@ -22,23 +23,6 @@ describe('TaskListHandlerService', () => {
 
   it('SHOULD be created WHEN the service is instantiated', () => {
     expect(service).toBeTruthy();
-  });
-
-  it('SHOULD load the task lists from the local storage WHEN the service is instantiated', () => {
-    const mockTaskList: TaskList = {
-      id: 123,
-      title: 'Test Task List',
-      tasks: [],
-    };
-
-    const mockTaskListArr = [mockTaskList];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mockTaskListArr));
-
-    const newService = new TaskListHandlerService(new LocalStorageService());
-
-    newService.getTaskLists().subscribe((taskLists) => {
-      expect(taskLists[0]).toEqual(mockTaskList);
-    });
   });
 
   it('SHOULD return an empty array WHEN getTaskLists is called and there are no task lists', (done) => {
@@ -136,6 +120,20 @@ describe('TaskListHandlerService', () => {
       done();
     });
   });
+});
+
+describe('TaskListHandlerService: LocalStorage', () => {
+  let service: TaskListHandlerService;
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [LocalStorageService],
+    });
+    service = TestBed.inject(TaskListHandlerService);
+  });
+
+  afterEach(() => {
+    localStorage.clear();
+  });
 
   it('SHOULD save the task lists in the local storage WHEN a task list is created', () => {
     const mockTaskList: TaskList = {
@@ -213,5 +211,22 @@ describe('TaskListHandlerService', () => {
     expect(localStorage.getItem(LOCAL_STORAGE_KEY)).toBe(
       JSON.stringify([mockTaskList]),
     );
+  });
+
+  it('SHOULD load the task lists from the local storage WHEN the service is instantiated', () => {
+    const mockTaskList: TaskList = {
+      id: 123,
+      title: 'Test Task List',
+      tasks: [],
+    };
+
+    const mockTaskListArr = [mockTaskList];
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mockTaskListArr));
+
+    const newService = new TaskListHandlerService(new LocalStorageService());
+
+    newService.getTaskLists().subscribe((taskLists) => {
+      expect(taskLists[0]).toEqual(mockTaskList);
+    });
   });
 });
