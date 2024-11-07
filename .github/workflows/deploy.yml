@@ -24,6 +24,11 @@ jobs:
       - name: Test 🧪
         run: npm run test:ci
 
+      - name: Code Coverage 📊
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Build 💢
         run: npm run build:prod
 
