@@ -22,6 +22,12 @@ changelog:
     - title: Tests 🧪
       labels:
         - test
+    - title: Improve ⚡
+      labels:
+        - improve
+    - title: Style 💫
+      labels:
+        - styles
     - title: Other Changes 🔄
       labels:
         - "*"
