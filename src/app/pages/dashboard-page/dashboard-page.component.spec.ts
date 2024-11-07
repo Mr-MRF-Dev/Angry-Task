@@ -41,7 +41,6 @@ describe('DashboardPageComponent: Initialization Tests', () => {
         AddTaskListDialogComponent,
       ],
       providers: [
-        TaskListHandlerService,
         { provide: TaskListHandlerService, useValue: taskListHandlerService },
       ],
     }).compileComponents();
