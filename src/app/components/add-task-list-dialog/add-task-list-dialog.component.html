@@ -1,9 +1,9 @@
 <button
   (click)="showDialog()"
-  class="flex h-full w-80 flex-col items-center justify-center gap-2 rounded-xl border-4 border-dotted border-gray-300"
+  class="flex h-full w-80 flex-col items-center justify-center gap-2 rounded-xl border-4 border-dotted border-surface-300 dark:border-surface-500"
 >
   <span class="pi pi-plus !text-4xl !text-gray-400"></span>
-  <p>Create New List</p>
+  <p class="dark:text-gray-400">Create New List</p>
 </button>
 
 <p-dialog header="Create New List" [modal]="true" [(visible)]="visible">

@@ -4,7 +4,7 @@ import { Aura } from 'primeng/themes/aura';
 
 // PNG: Prime NG Config
 export const PNGConfPerfix = 'p';
-export const PNGDarkModeSelector = 'set-dark-mode';
+export const PNGDarkModeSelector = 'dark';
 
 export const PNGConfig = {
   preset: Aura,
