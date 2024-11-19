@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardLayoutComponent } from './dashboard-layout.component';
+import { ThemeModeService } from '../../services/themeService/theme-mode.service';
 
 describe('DashboardLayoutComponent: Initialize Tests', () => {
   let component: DashboardLayoutComponent;
@@ -9,6 +10,7 @@ describe('DashboardLayoutComponent: Initialize Tests', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DashboardLayoutComponent],
+      providers: [ThemeModeService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardLayoutComponent);
