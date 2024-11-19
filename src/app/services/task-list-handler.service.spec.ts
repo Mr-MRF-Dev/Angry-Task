@@ -1,11 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import {
-  LOCAL_STORAGE_KEY,
-  TaskListHandlerService,
-} from './task-list-handler.service';
+import { TaskListHandlerService } from './task-list-handler.service';
 import { TaskList } from '../models/task_list';
 import { Task } from '../models/task';
 import { LocalStorageService } from './local-storage.service';
+import { LOCAL_STORAGE_KEY } from '../configs/localStorageKeys';
 
 describe('TaskListHandlerService: Functionality', () => {
   let service: TaskListHandlerService;

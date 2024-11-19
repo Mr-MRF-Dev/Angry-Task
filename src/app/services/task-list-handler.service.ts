@@ -3,8 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { TaskList } from '../models/task_list';
 import { LocalStorageService } from './local-storage.service';
 import { Task } from '../models/task';
-
-export const LOCAL_STORAGE_KEY = 'taskLists';
+import { LOCAL_STORAGE_KEY } from '../configs/localStorageKeys';
 
 @Injectable({
   providedIn: 'root',
