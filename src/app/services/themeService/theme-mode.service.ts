@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
+import { ThemeMode } from '../../types/themeMode';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class ThemeModeService {
     }
   }
 
-  toggleThemeMode(): 'dark' | 'light' {
+  toggleThemeMode(): ThemeMode {
     if (this.localStorage.get('prefers-color-scheme') === 'dark') {
       this.element?.classList.remove('set-dark-mode');
       this.localStorage.set('prefers-color-scheme', 'light');
@@ -26,7 +27,7 @@ export class ThemeModeService {
     }
   }
 
-  getTheme(): 'dark' | 'light' {
+  getTheme(): ThemeMode {
     const localStorageItem = this.localStorage.get('prefers-color-scheme');
     if (localStorageItem === 'dark') return 'dark';
     else if (localStorageItem === 'light') return 'light';
