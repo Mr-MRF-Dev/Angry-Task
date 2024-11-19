@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { TaskList } from '../models/task_list';
 import { LocalStorageService } from './local-storage.service';
 import { Task } from '../models/task';
-import { LOCAL_STORAGE_KEY } from '../configs/localStorageKeys';
+import { TASK_LISTS_KEY } from '../configs/localStorageKeys';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +14,12 @@ export class TaskListHandlerService {
 
   constructor(private localStorageService: LocalStorageService) {
     this.taskLists = this.localStorageService.loadArray(
-      LOCAL_STORAGE_KEY,
+      TASK_LISTS_KEY,
     ) as TaskList[];
     this.TaskListsObs = new BehaviorSubject<TaskList[]>(this.taskLists);
 
     this.getTaskLists().subscribe((taskLists) => {
-      this.localStorageService.saveArray(LOCAL_STORAGE_KEY, taskLists);
+      this.localStorageService.saveArray(TASK_LISTS_KEY, taskLists);
     });
   }
 

@@ -3,7 +3,7 @@ import { TaskListHandlerService } from './task-list-handler.service';
 import { TaskList } from '../models/task_list';
 import { Task } from '../models/task';
 import { LocalStorageService } from './local-storage.service';
-import { LOCAL_STORAGE_KEY } from '../configs/localStorageKeys';
+import { TASK_LISTS_KEY } from '../configs/localStorageKeys';
 
 describe('TaskListHandlerService: Functionality', () => {
   let service: TaskListHandlerService;
@@ -142,7 +142,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
 
     service.createTaskList(mockTaskList);
 
-    expect(localStorage.getItem(LOCAL_STORAGE_KEY)).toBe(
+    expect(localStorage.getItem(TASK_LISTS_KEY)).toBe(
       JSON.stringify([mockTaskList]),
     );
   });
@@ -157,7 +157,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
     service.createTaskList(mockTaskList);
     service.deleteTaskList(mockTaskList.id);
 
-    expect(localStorage.getItem(LOCAL_STORAGE_KEY)).toBe(JSON.stringify([]));
+    expect(localStorage.getItem(TASK_LISTS_KEY)).toBe(JSON.stringify([]));
   });
 
   it('SHOULD save the task lists in the local storage WHEN a task is created', () => {
@@ -171,7 +171,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
     service.createTaskList(mockTaskList);
     service.createTask(mockTaskList.id, mockTask);
 
-    expect(localStorage.getItem(LOCAL_STORAGE_KEY)).toBe(
+    expect(localStorage.getItem(TASK_LISTS_KEY)).toBe(
       JSON.stringify([mockTaskList]),
     );
   });
@@ -188,7 +188,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
     service.createTask(mockTaskList.id, mockTask);
     service.deleteTask(mockTaskList.id, mockTask.id);
 
-    expect(localStorage.getItem(LOCAL_STORAGE_KEY)).toBe(
+    expect(localStorage.getItem(TASK_LISTS_KEY)).toBe(
       JSON.stringify([mockTaskList]),
     );
   });
@@ -206,7 +206,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
     const editedTask = { ...mockTask, description: 'description Task' };
     service.editTask(mockTaskList.id, editedTask);
 
-    expect(localStorage.getItem(LOCAL_STORAGE_KEY)).toBe(
+    expect(localStorage.getItem(TASK_LISTS_KEY)).toBe(
       JSON.stringify([mockTaskList]),
     );
   });
@@ -219,7 +219,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
     };
 
     const mockTaskListArr = [mockTaskList];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mockTaskListArr));
+    localStorage.setItem(TASK_LISTS_KEY, JSON.stringify(mockTaskListArr));
 
     const newService = new TaskListHandlerService(new LocalStorageService());
 
