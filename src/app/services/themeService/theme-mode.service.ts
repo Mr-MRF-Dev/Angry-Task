@@ -14,6 +14,9 @@ export class ThemeModeService {
     this.element = document.querySelector('html');
     if (this.localStorage.get(THEME_MODE_KEY) === 'dark') {
       this.element?.classList.add(PNGDarkModeSelector);
+    } else {
+      // Set default theme
+      this.localStorage.set(THEME_MODE_KEY, 'light');
     }
   }
 
