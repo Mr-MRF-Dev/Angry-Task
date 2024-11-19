@@ -79,19 +79,4 @@ export class AppComponent {
 //     updatePreset(Lara);
 //     updatePrimaryPalette(Lara.primitive.red);
 //   }
-
-//   toggleDarkMode() {
-//     const element = document.querySelector('html');
-//     // element?.classList.toggle('system');
-
-//     // read from local storage
-//     // prefers-color-scheme
-//     if (localStorage.getItem('prefers-color-scheme') === 'dark') {
-//       element?.classList.remove('system');
-//       localStorage.setItem('prefers-color-scheme', 'light');
-//     } else {
-//       element?.classList.add('system');
-//       localStorage.setItem('prefers-color-scheme', 'dark');
-//     }
-//   }
 // }
