@@ -38,3 +38,54 @@ describe('DashboardLayoutComponent: Initialize Tests', () => {
     expect(hScreen?.offsetHeight).toEqual(window.innerHeight);
   });
 });
+
+describe('DashboardLayoutComponent: functionality', () => {
+  let component: DashboardLayoutComponent;
+  let fixture: ComponentFixture<DashboardLayoutComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [DashboardLayoutComponent],
+      providers: [ThemeModeService],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(DashboardLayoutComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+  it('SHOULD set the theme moon icon WHEN initialized', () => {
+    expect(component['toggleThemeIcon']).toBe('pi pi-moon');
+  });
+
+  it('SHOULD set the theme sun icon WHEN theme toggled', () => {
+    component.toggleTheme();
+    expect(component['toggleThemeIcon']).toBe('pi pi-sun');
+  });
+
+  it('SHOULD call toggleThemeMode WHEN toggleTheme is called', () => {
+    const themeModeService =
+      fixture.debugElement.injector.get(ThemeModeService);
+    spyOn(themeModeService, 'toggleThemeMode').and.callThrough();
+    component.toggleTheme();
+    expect(themeModeService.toggleThemeMode).toHaveBeenCalled();
+  });
+
+  it('SHOULD set the theme icon based on the initial theme', () => {
+    const themeModeService =
+      fixture.debugElement.injector.get(ThemeModeService);
+    spyOn(themeModeService, 'getTheme').and.returnValue('dark');
+    component = new DashboardLayoutComponent(themeModeService);
+    expect(component['toggleThemeIcon']).toBe('pi pi-sun');
+  });
+
+  it('SHOULD set the theme moon icon WHEN theme toggled back to light', () => {
+    component.toggleTheme();
+    component.toggleTheme();
+    expect(component['toggleThemeIcon']).toBe('pi pi-moon');
+  });
+});
