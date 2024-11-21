@@ -2,12 +2,15 @@ import { TestBed } from '@angular/core/testing';
 
 import { ThemeModeService } from './theme-mode.service';
 import { THEME_MODE_KEY } from '../../configs/localStorageKeys';
+import { LocalStorageService } from '../local-storage.service';
 
 describe('ThemeModeService: Functionality', () => {
   let service: ThemeModeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [LocalStorageService],
+    });
     service = TestBed.inject(ThemeModeService);
   });
 
@@ -42,7 +45,9 @@ describe('ThemeModeService: Local Storage', () => {
   let service: ThemeModeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [LocalStorageService],
+    });
     service = TestBed.inject(ThemeModeService);
   });
 
@@ -102,6 +107,66 @@ describe('ThemeModeService: Local Storage', () => {
 
   it('SHOULD return default theme WHEN theme mode is set to empty', () => {
     localStorage.removeItem(THEME_MODE_KEY);
+    expect(service.getTheme()).toBe('light');
+  });
+});
+
+class MockLocalStorageService {
+  private store = new Map<string, string>();
+
+  get(key: string): string | null {
+    return this.store.get(key) || null;
+  }
+
+  set(key: string, value: string): void {
+    this.store.set(key, value);
+  }
+
+  remove(key: string): void {
+    this.store.delete(key);
+  }
+
+  saveArray(key: string, value: string[]): void {
+    this.store.set(key, JSON.stringify(value));
+  }
+
+  loadArray(key: string): string[] {
+    const value = this.store.get(key);
+    return value ? JSON.parse(value) : [];
+  }
+}
+
+describe('ThemeModeService: Mock loaclStorageService', () => {
+  let service: ThemeModeService;
+  let localStorageService: MockLocalStorageService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: LocalStorageService, useClass: MockLocalStorageService },
+      ],
+    });
+    localStorageService = TestBed.inject(
+      LocalStorageService,
+    ) as unknown as MockLocalStorageService;
+    service = new ThemeModeService(localStorageService);
+  });
+
+  it('SHOULD initialize with dark mode WHEN localStorage is set to dark', () => {
+    localStorageService.set(THEME_MODE_KEY, 'dark');
+    service = new ThemeModeService(localStorageService);
+    expect(service.getTheme()).toBe('dark');
+  });
+
+  it('SHOULD initialize with light mode WHEN localStorage is set to light', () => {
+    localStorageService.set(THEME_MODE_KEY, 'light');
+    service = new ThemeModeService(localStorageService);
+    expect(service.getTheme()).toBe('light');
+  });
+
+  it('SHOULD initialize with light mode WHEN localStorage is empty', () => {
+    localStorageService.remove(THEME_MODE_KEY);
+    service = new ThemeModeService(localStorageService);
     expect(service.getTheme()).toBe('light');
   });
 });
