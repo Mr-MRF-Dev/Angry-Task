@@ -2,12 +2,15 @@ import { TestBed } from '@angular/core/testing';
 
 import { ThemeModeService } from './theme-mode.service';
 import { THEME_MODE_KEY } from '../../configs/localStorageKeys';
+import { LocalStorageService } from '../local-storage.service';
 
 describe('ThemeModeService: Functionality', () => {
   let service: ThemeModeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [LocalStorageService],
+    });
     service = TestBed.inject(ThemeModeService);
   });
 
@@ -42,7 +45,9 @@ describe('ThemeModeService: Local Storage', () => {
   let service: ThemeModeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [LocalStorageService],
+    });
     service = TestBed.inject(ThemeModeService);
   });
 
