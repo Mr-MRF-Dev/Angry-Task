@@ -7,11 +7,11 @@ export const PNGDarkModeSelector = 'dark';
 export const PNGConfig = {
   theme: {
     preset: Aura,
-  },
-  options: {
-    prefix: PNGConfPerfix,
-    darkModeSelector: `.${PNGDarkModeSelector}`,
-    // cssLayer: false,
+    options: {
+      darkModeSelector: `.${PNGDarkModeSelector}`,
+      prefix: PNGConfPerfix,
+      cssLayer: false,
+    },
   },
 };
 
