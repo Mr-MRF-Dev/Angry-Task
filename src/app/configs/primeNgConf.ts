@@ -1,17 +1,17 @@
-import { Aura } from 'primeng/themes/aura';
-// import { Lara } from 'primeng/themes/lara';
-// import { usePreset, updatePrimaryPalette } from 'primeng/themes';
+import Aura from '@primeng/themes/aura';
 
 // PNG: Prime NG Config
 export const PNGConfPerfix = 'p';
 export const PNGDarkModeSelector = 'dark';
 
 export const PNGConfig = {
-  preset: Aura,
-  options: {
-    prefix: PNGConfPerfix,
-    darkModeSelector: `.${PNGDarkModeSelector}`,
-    cssLayer: false,
+  theme: {
+    preset: Aura,
+    options: {
+      darkModeSelector: `.${PNGDarkModeSelector}`,
+      prefix: PNGConfPerfix,
+      cssLayer: false,
+    },
   },
 };
 
