@@ -111,7 +111,7 @@ ng build
 
 The build artifacts will be stored in the `dist/` directory. This directory will contain all the files necessary for deployment.
 
-### 📄 Linting the Application
+#### 📄 Linting the Application
 
 To lint the application, run:
 
