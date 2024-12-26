@@ -7,9 +7,7 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-layout',
-  standalone: true,
   imports: [AvatarModule, MenubarModule, ButtonModule, RouterOutlet],
-
   templateUrl: './dashboard-layout.component.html',
   styleUrl: './dashboard-layout.component.css',
 })

@@ -15,7 +15,6 @@ import { TaskList } from '../../models/task_list';
 
 @Component({
   selector: 'app-add-task-dialog',
-  standalone: true,
   imports: [DialogModule, ButtonModule, InputTextModule, ReactiveFormsModule],
   templateUrl: './add-task-dialog.component.html',
   styleUrl: './add-task-dialog.component.css',

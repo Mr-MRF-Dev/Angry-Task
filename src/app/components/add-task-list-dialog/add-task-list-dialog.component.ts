@@ -13,7 +13,6 @@ import { TaskListHandlerService } from '../../services/task-list-handler.service
 
 @Component({
   selector: 'app-add-task-list-dialog',
-  standalone: true,
   imports: [DialogModule, ButtonModule, InputTextModule, ReactiveFormsModule],
   templateUrl: './add-task-list-dialog.component.html',
   styleUrl: './add-task-list-dialog.component.css',

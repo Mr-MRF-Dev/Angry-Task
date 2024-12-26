@@ -15,7 +15,6 @@ import { EditTaskHandlerService } from '../../services/edit-task-handler.service
 
 @Component({
   selector: 'app-edit-task-dialog',
-  standalone: true,
   imports: [DialogModule, ButtonModule, InputTextModule, ReactiveFormsModule],
   templateUrl: './edit-task-dialog.component.html',
   styleUrl: './edit-task-dialog.component.css',
