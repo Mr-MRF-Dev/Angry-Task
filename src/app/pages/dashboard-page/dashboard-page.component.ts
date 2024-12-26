@@ -8,7 +8,6 @@ import { EditTaskDialogComponent } from '../../components/edit-task-dialog/edit-
 
 @Component({
   selector: 'app-dashboard-page',
-  standalone: true,
   imports: [
     TaskListComponent,
     AddTaskDialogComponent,

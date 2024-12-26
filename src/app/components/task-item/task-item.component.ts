@@ -11,7 +11,6 @@ import { TaskListHandlerService } from '../../services/task-list-handler.service
 import { EditTaskHandlerService } from '../../services/edit-task-handler.service';
 @Component({
   selector: 'app-task-item',
-  standalone: true,
   imports: [PanelModule, FormsModule, ButtonModule, CheckboxModule, MenuModule],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css',

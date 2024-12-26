@@ -8,7 +8,6 @@ import { TaskListHandlerService } from '../../services/task-list-handler.service
 
 @Component({
   selector: 'app-task-list',
-  standalone: true,
   imports: [CardModule, ButtonModule, TaskItemComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
