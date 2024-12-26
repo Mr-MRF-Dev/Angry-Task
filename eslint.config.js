@@ -1,4 +1,3 @@
-// @ts-check
 const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
@@ -28,6 +27,20 @@ module.exports = tseslint.config(
           type: "element",
           prefix: "app",
           style: "kebab-case",
+        },
+      ],
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+          allowTaggedTemplates: true,
+        },
+      ],
+      "@typescript-eslint/no-empty-function": [
+        "error",
+        {
+          allow: ["arrowFunctions", "functions", "methods"],
         },
       ],
     },
