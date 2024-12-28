@@ -6,28 +6,31 @@ changelog:
     authors:
       - octocat
   categories:
-    - title: Exciting New Features 🎉
+    - title: "Release New Version 🏷️"
+      labels:
+        - release
+    - title: "Exciting New Features 🎉"
       labels:
         - feature
-    - title: Bug fixes 🐛
+    - title: "Bug Fixes 🐛"
       labels:
         - bug
         - fix
-    - title: Dependencies 👒
+    - title: "Dependencies 👒"
       labels:
         - dependencies
-    - title: Documentation 📚
+    - title: "Documentation 📚"
       labels:
         - documentation
-    - title: Tests 🧪
+    - title: "Tests 🧪"
       labels:
         - test
-    - title: Improve ⚡
+    - title: "Improvements ⚡"
       labels:
         - improve
-    - title: Style 💫
+    - title: "Style 💫"
       labels:
         - styles
-    - title: Other Changes 🔄
+    - title: "Other Changes 🔄"
       labels:
         - "*"
