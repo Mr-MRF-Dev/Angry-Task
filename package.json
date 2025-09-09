@@ -25,6 +25,7 @@
     "prettier:write": "prettier --ignore-unknown --write",
     "prettier:check": "prettier --ignore-unknown --check",
     "lint": "ng lint",
+    "precommit": "npm run lint && npm run test:ci",
     "update:ncu:check": "npx npm-check-updates",
     "update:all": "npx npm-check-updates -u && npm i && npm up --S",
     "update:ncu": "npx npm-check-updates -u && npm i",

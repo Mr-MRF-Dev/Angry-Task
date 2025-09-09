@@ -221,9 +221,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
     const mockTaskListArr = [mockTaskList];
     localStorage.setItem(TASK_LISTS_KEY, JSON.stringify(mockTaskListArr));
 
-    const newService = new TaskListHandlerService(new LocalStorageService());
-
-    newService.getTaskLists().subscribe((taskLists) => {
+    service.getTaskLists().subscribe((taskLists) => {
       expect(taskLists[0]).toEqual(mockTaskList);
     });
   });

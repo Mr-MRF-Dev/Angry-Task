@@ -1,17 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
 import { ThemeMode } from '../../types/themeMode';
 import { THEME_MODE_KEY } from '../../configs/localStorageKeys';
 import { PNGDarkModeSelector } from '../../configs/primeNgConf';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeModeService {
+  private document = inject(DOCUMENT);
+  private localStorage = inject(LocalStorageService);
   private element: HTMLElement | null;
 
-  constructor(private localStorage: LocalStorageService) {
-    this.element = document.querySelector('html');
+  constructor() {
+    this.element = this.document.querySelector('html');
     if (this.localStorage.get(THEME_MODE_KEY) === 'dark') {
       this.element?.classList.add(PNGDarkModeSelector);
     } else {
