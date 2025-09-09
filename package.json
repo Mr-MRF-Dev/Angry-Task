@@ -26,7 +26,8 @@
     "prettier:check": "prettier --ignore-unknown --check",
     "lint": "ng lint",
     "update:ncu:check": "npx npm-check-updates",
-    "update:ncu": "npx npm-check-updates -u && npm install",
+    "update:all": "npx npm-check-updates -u && npm i && npm up --S",
+    "update:ncu": "npx npm-check-updates -u && npm i",
     "update:npm": "npm update --save"
   },
   "private": true,
