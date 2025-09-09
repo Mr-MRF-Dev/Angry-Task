@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Build 💢
-        run: npm run build:prod
+        run: npm run build:prod:gh
 
       - name: Upload Build 🔃
         if: success()
