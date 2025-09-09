@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditTaskDialogComponent } from './edit-task-dialog.component';
 import { Task } from '../../models/task';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('EditTaskDialogComponent', () => {
   let component: EditTaskDialogComponent;
@@ -10,6 +12,7 @@ describe('EditTaskDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [EditTaskDialogComponent],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EditTaskDialogComponent);

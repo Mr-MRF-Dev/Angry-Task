@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
 import { TaskListHandlerService } from './task-list-handler.service';
 import { TaskList } from '../models/task_list';
 import { Task } from '../models/task';
@@ -10,7 +12,11 @@ describe('TaskListHandlerService: Functionality', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LocalStorageService],
+      providers: [
+        LocalStorageService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
     });
     service = TestBed.inject(TaskListHandlerService);
   });
@@ -124,7 +130,11 @@ describe('TaskListHandlerService: LocalStorage', () => {
   let service: TaskListHandlerService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LocalStorageService],
+      providers: [
+        LocalStorageService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
     });
     service = TestBed.inject(TaskListHandlerService);
   });
@@ -211,7 +221,7 @@ describe('TaskListHandlerService: LocalStorage', () => {
     );
   });
 
-  it('SHOULD load the task lists from the local storage WHEN the service is instantiated', () => {
+  it('SHOULD load the task lists from the local storage WHEN the service is instantiated', (done) => {
     const mockTaskList: TaskList = {
       id: 123,
       title: 'Test Task List',
@@ -221,10 +231,20 @@ describe('TaskListHandlerService: LocalStorage', () => {
     const mockTaskListArr = [mockTaskList];
     localStorage.setItem(TASK_LISTS_KEY, JSON.stringify(mockTaskListArr));
 
-    const newService = new TaskListHandlerService(new LocalStorageService());
+    // Create a fresh TestBed configuration to ensure a new service instance
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      providers: [
+        LocalStorageService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
+    });
 
+    const newService = TestBed.inject(TaskListHandlerService);
     newService.getTaskLists().subscribe((taskLists) => {
       expect(taskLists[0]).toEqual(mockTaskList);
+      done();
     });
   });
 });

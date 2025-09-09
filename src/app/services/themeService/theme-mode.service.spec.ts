@@ -149,24 +149,21 @@ describe('ThemeModeService: Mock loaclStorageService', () => {
     localStorageService = TestBed.inject(
       LocalStorageService,
     ) as unknown as MockLocalStorageService;
-    service = new ThemeModeService(localStorageService);
+    service = TestBed.inject(ThemeModeService);
   });
 
   it('SHOULD initialize with dark mode WHEN localStorage is set to dark', () => {
     localStorageService.set(THEME_MODE_KEY, 'dark');
-    service = new ThemeModeService(localStorageService);
     expect(service.getTheme()).toBe('dark');
   });
 
   it('SHOULD initialize with light mode WHEN localStorage is set to light', () => {
     localStorageService.set(THEME_MODE_KEY, 'light');
-    service = new ThemeModeService(localStorageService);
     expect(service.getTheme()).toBe('light');
   });
 
   it('SHOULD initialize with light mode WHEN localStorage is empty', () => {
     localStorageService.remove(THEME_MODE_KEY);
-    service = new ThemeModeService(localStorageService);
     expect(service.getTheme()).toBe('light');
   });
 });

@@ -2,7 +2,7 @@
 module.exports = function (config) {
   config.set({
     basePath: "",
-    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    frameworks: ["jasmine"],
     reporters: ["progress", "kjhtml", "coverage"],
 
     plugins: [
@@ -10,7 +10,6 @@ module.exports = function (config) {
       require("karma-chrome-launcher"),
       require("karma-jasmine-html-reporter"),
       require("karma-coverage"),
-      require("@angular-devkit/build-angular/plugins/karma"),
     ],
     client: {
       jasmine: {},

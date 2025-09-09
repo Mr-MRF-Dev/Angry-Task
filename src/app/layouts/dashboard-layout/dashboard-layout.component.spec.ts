@@ -79,7 +79,9 @@ describe('DashboardLayoutComponent: functionality', () => {
     const themeModeService =
       fixture.debugElement.injector.get(ThemeModeService);
     spyOn(themeModeService, 'getTheme').and.returnValue('dark');
-    component = new DashboardLayoutComponent(themeModeService);
+    component = TestBed.createComponent(
+      DashboardLayoutComponent,
+    ).componentInstance;
     expect(component['toggleThemeIcon']).toBe('pi pi-sun');
   });
 

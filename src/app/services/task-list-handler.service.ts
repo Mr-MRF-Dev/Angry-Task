@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TaskList } from '../models/task_list';
 import { LocalStorageService } from './local-storage.service';
 import { Task } from '../models/task';
 import { TASK_LISTS_KEY } from '../configs/localStorageKeys';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskListHandlerService {
+  private http = inject(HttpClient);
+  private localStorageService = inject(LocalStorageService);
   taskLists: TaskList[];
   TaskListsObs: BehaviorSubject<TaskList[]>;
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor() {
     this.taskLists = this.localStorageService.loadArray(
       TASK_LISTS_KEY,
     ) as TaskList[];

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
@@ -12,10 +12,11 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './dashboard-layout.component.css',
 })
 export class DashboardLayoutComponent {
+  private themeModeService = inject(ThemeModeService);
   protected toggleThemeIcon: 'pi pi-moon' | 'pi pi-sun';
 
-  constructor(private themeModeService: ThemeModeService) {
-    if (themeModeService.getTheme() == 'dark') {
+  constructor() {
+    if (this.themeModeService.getTheme() == 'dark') {
       this.toggleThemeIcon = 'pi pi-sun';
     } else {
       this.toggleThemeIcon = 'pi pi-moon';
