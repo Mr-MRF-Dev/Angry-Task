@@ -11,11 +11,42 @@
 
 ![screenshot](/images/screenshot.png)
 
-AngryTask is a simple task manager that allows you to create, edit, and delete tasks. It is built using Angular and PrimeNG. This project was created to help me learn Angular and PrimeNG. The project is hosted on GitHub Pages and can be accessed [here](https://mr-mrf-dev.github.io/Angry-Task/).
+AngryTask is a simple task manager that allows you to create, edit, and delete tasks. It is built using Angular and PrimeNG. This project was created to help me learn Angular and PrimeNG. The project is hosted on GitHub Pages and can be accessed at the [live demo](https://mr-mrf-dev.github.io/Angry-Task/).
 
 ## 🚀 Demo
 
-Check out the live demo [here](https://mr-mrf-dev.github.io/Angry-Task/)!
+Check out the [live demo](https://mr-mrf-dev.github.io/Angry-Task/)!
+
+## 🐳 Using Docker
+
+You can also run AngryTask using Docker, which provides a consistent environment across different systems.
+
+### Prerequisites
+
+Make sure you have [Docker](https://www.docker.com/) installed on your system.
+
+### Running with Docker
+
+1. Clone the repository (if you haven't already):
+
+   ```bash
+   git clone https://github.com/Mr-MRF-Dev/Angry-Task.git
+   cd Angry-Task
+   ```
+
+2. Build the Docker image:
+
+   ```bash
+   docker build -t angry-task .
+   ```
+
+3. Run the container:
+
+   ```bash
+   docker run -p 4200:80 angry-task
+   ```
+
+4. Open your browser and navigate to [http://localhost:4200](http://localhost:4200)
 
 ## 📥 Getting Started
 
