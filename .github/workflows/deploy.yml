@@ -40,9 +40,29 @@ jobs:
         with:
           path: dist/angry-task/browser
 
+  deploy:
+    needs: build
+    name: Deploy 🚀
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages 🌍
+        id: deployment
+        uses: actions/deploy-pages@v4
+
   push_to_registries:
     name: Push Docker image to Docker Hub & GHC 🐳
     needs: build
+
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -92,27 +112,8 @@ jobs:
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
 
-  deploy:
-    needs: push_to_registries
-    name: Deploy 🚀
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Deploy to GitHub Pages 🌍
-        id: deployment
-        uses: actions/deploy-pages@v4
-
   release:
-    needs: deploy
+    needs: [deploy, push_to_registries]
     name: Release 📚
     permissions:
       contents: write
