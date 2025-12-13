@@ -25,7 +25,27 @@ You can also run AngryTask using Docker, which provides a consistent environment
 
 Make sure you have [Docker](https://www.docker.com/) installed on your system.
 
-### Running with Docker
+### Quick Start with Pre-built Image
+
+Pull and run the latest version from Docker Hub or GitHub Container Registry:
+
+**From Docker Hub:**
+
+```bash
+docker pull mrmrfdev/angry-task:latest
+docker run -p 4200:80 mrmrfdev/angry-task:latest
+```
+
+**From GitHub Container Registry (GHCR):**
+
+```bash
+docker pull ghcr.io/mr-mrf-dev/angry-task:latest
+docker run -p 4200:80 ghcr.io/mr-mrf-dev/angry-task:latest
+```
+
+Then open your browser and navigate to [http://localhost:4200](http://localhost:4200)
+
+### Building from Source
 
 1. Clone the repository (if you haven't already):
 
