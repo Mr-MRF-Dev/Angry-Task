@@ -2,7 +2,8 @@
 
 [![GitHub Release](https://img.shields.io/github/v/release/mr-mrf-dev/angry-task)](https://github.com/Mr-MRF-Dev/Angry-Task/releases)
 ![GitHub repo size](https://img.shields.io/github/repo-size/mr-mrf-dev/angry-task)
-[![Release & Deploy GitHub Page](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml/badge.svg)](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml)
+[![Release & Deploy on GitHub Pages 🚀](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml/badge.svg)](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml)
+[![Build & Deploy Latest Image 🚀](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/latest-build.yml/badge.svg)](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/latest-build.yml)
 [![codecov](https://codecov.io/github/Mr-MRF-Dev/Angry-Task/graph/badge.svg?token=CIUDK6BFNY)](https://codecov.io/github/Mr-MRF-Dev/Angry-Task)
 [![GitHub deployments](https://img.shields.io/github/deployments/mr-mrf-dev/angry-task/github-pages?label=Deployments)](https://github.com/Mr-MRF-Dev/Angry-Task/deployments)
 [![Docker Pulls](https://img.shields.io/docker/pulls/mrmrfdev/angry-task?label=Docker%20Pulls)](https://hub.docker.com/r/mrmrfdev/angry-task)

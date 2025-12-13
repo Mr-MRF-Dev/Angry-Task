@@ -1,4 +1,4 @@
-name: Release & Deploy GitHub Page / Docker Image (GHCR) 🚀
+name: Release & Deploy on GitHub Pages 🚀
 
 on:
   push:
