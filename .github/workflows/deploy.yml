@@ -1,4 +1,4 @@
-name: Release & Deploy GitHub Page 🚀
+name: Release & Deploy GitHub Page / Docker Image (GHCR) 🚀
 
 on:
   push:
@@ -94,6 +94,8 @@ jobs:
           images: |
             ${{ vars.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}
             ghcr.io/${{ github.repository }}
+          tags: |
+            type=semver,pattern={{version}}
 
       - name: Build and push Docker image 🐋
         id: push
