@@ -2,9 +2,13 @@
 
 [![GitHub Release](https://img.shields.io/github/v/release/mr-mrf-dev/angry-task)](https://github.com/Mr-MRF-Dev/Angry-Task/releases)
 ![GitHub repo size](https://img.shields.io/github/repo-size/mr-mrf-dev/angry-task)
-[![Release & Deploy GitHub Page](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml/badge.svg)](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml)
+[![Release & Deploy on GitHub Pages 🚀](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml/badge.svg)](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/deploy.yml)
+[![Build & Deploy Latest Image 🚀](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/latest-build.yml/badge.svg)](https://github.com/Mr-MRF-Dev/Angry-Task/actions/workflows/latest-build.yml)
 [![codecov](https://codecov.io/github/Mr-MRF-Dev/Angry-Task/graph/badge.svg?token=CIUDK6BFNY)](https://codecov.io/github/Mr-MRF-Dev/Angry-Task)
 [![GitHub deployments](https://img.shields.io/github/deployments/mr-mrf-dev/angry-task/github-pages?label=Deployments)](https://github.com/Mr-MRF-Dev/Angry-Task/deployments)
+[![Docker Pulls](https://img.shields.io/docker/pulls/mrmrfdev/angry-task?label=Docker%20Pulls)](https://hub.docker.com/r/mrmrfdev/angry-task)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/mrmrfdev/angry-task?label=Docker%20Image%20Size)](https://hub.docker.com/r/mrmrfdev/angry-task)
+[![GitHub package.json angular version](https://img.shields.io/github/package-json/dependency-version/mr-mrf-dev/angry-task/@angular/core)](https://angular.io/)
 [![GitHub package.json angular cli version](https://img.shields.io/github/package-json/dependency-version/mr-mrf-dev/angry-task/dev/%40angular%2Fcli?label=Angular%20CLI)](https://github.com/angular/angular-cli)
 [![GitHub package.json primeNG version](https://img.shields.io/github/package-json/dependency-version/mr-mrf-dev/angry-task/primeng)](https://primeng.org/)
 [![GitHub License](https://img.shields.io/github/license/mr-mrf-dev/angry-task)](/LICENSE)
@@ -17,6 +21,24 @@ AngryTask is a simple task manager that allows you to create, edit, and delete t
 
 Check out the [live demo](https://mr-mrf-dev.github.io/Angry-Task/)!
 
+## 📦 Angry Task Image
+
+You can find the Angry Task Docker image on [Docker Hub](https://hub.docker.com/r/mrmrfdev/angry-task) and [GitHub Container Registry (GHCR)](https://github.com/Mr-MRF-Dev/Angry-Task/pkgs/container/angry-task)
+
+**From Docker Hub:**
+
+```bash
+docker pull mrmrfdev/angry-task:latest
+docker run -p 4200:80 mrmrfdev/angry-task:latest
+```
+
+**From GitHub Container Registry (GHCR):**
+
+```bash
+docker pull ghcr.io/mr-mrf-dev/angry-task:latest
+docker run -p 4200:80 ghcr.io/mr-mrf-dev/angry-task:latest
+```
+
 ## 🐳 Using Docker
 
 You can also run AngryTask using Docker, which provides a consistent environment across different systems.
@@ -25,7 +47,9 @@ You can also run AngryTask using Docker, which provides a consistent environment
 
 Make sure you have [Docker](https://www.docker.com/) installed on your system.
 
-### Running with Docker
+Then open your browser and navigate to [http://localhost:4200](http://localhost:4200)
+
+### Building from Source
 
 1. Clone the repository (if you haven't already):
 

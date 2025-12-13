@@ -1,4 +1,4 @@
-name: Release & Deploy GitHub Page / Docker Image (GHCR) 🚀
+name: Release & Deploy on GitHub Pages 🚀
 
 on:
   push:
@@ -113,6 +113,14 @@ jobs:
           subject-name: ghcr.io/${{ github.repository }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+      - name: Update Docker Hub Description 📝
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ vars.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}
+          readme-filepath: ./README.md
 
   release:
     needs: [deploy, push_to_registries]
