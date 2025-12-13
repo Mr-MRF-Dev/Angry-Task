@@ -41,6 +41,7 @@ jobs:
             ${{ vars.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}
             ghcr.io/${{ github.repository }}
           tags: |
+            master
             latest
 
       - name: Build and push Docker image 🐋
