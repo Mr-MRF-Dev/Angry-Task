@@ -72,6 +72,37 @@ Then open your browser and navigate to [http://localhost:4200](http://localhost:
 
 4. Open your browser and navigate to [http://localhost:4200](http://localhost:4200)
 
+### Using Docker Compose
+
+For easier management, you can use Docker Compose:
+
+1. Clone the repository (if you haven't already):
+
+   ```bash
+   git clone https://github.com/Mr-MRF-Dev/Angry-Task.git
+   cd Angry-Task
+   ```
+
+2. Run with Docker Compose:
+
+   ```bash
+   docker compose up
+   ```
+
+   Or run in detached mode (background):
+
+   ```bash
+   docker compose up -d
+   ```
+
+3. Open your browser and navigate to [http://localhost:4200](http://localhost:4200)
+
+4. To stop the container:
+
+   ```bash
+   docker compose down
+   ```
+
 ## 📥 Getting Started
 
 1. Clone the repository
