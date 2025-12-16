@@ -59,4 +59,4 @@ jobs:
         with:
           subject-name: ghcr.io/${{ github.repository }}
           subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: true
+          push-to-registry: false
