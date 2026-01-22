@@ -12,6 +12,7 @@
     "url": "https://github.com/Mr-Mrf-Dev/Angry-Task/issues"
   },
   "license": "MIT",
+  "private": true,
   "scripts": {
     "prepare": "husky",
     "ng": "ng",
@@ -32,7 +33,6 @@
     "update:ncu": "npx npm-check-updates -u && npm i",
     "update:npm": "npm update --save"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^21.0.6",
     "@angular/common": "^21.0.6",
