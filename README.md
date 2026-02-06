@@ -47,8 +47,6 @@ You can also run AngryTask using Docker, which provides a consistent environment
 
 Make sure you have [Docker](https://www.docker.com/) installed on your system.
 
-Then open your browser and navigate to [http://localhost:4200](http://localhost:4200)
-
 ### Building from Source
 
 1. Clone the repository (if you haven't already):
