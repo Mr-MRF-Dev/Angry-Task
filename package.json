@@ -57,7 +57,7 @@
     "@angular/cli": "^21.2.10",
     "@angular/compiler-cli": "^21.2.12",
     "@types/jasmine": "~5.1.13",
-    "angular-eslint": "21.2.0",
+    "angular-eslint": "21.3.1",
     "autoprefixer": "^10.5.0",
     "eslint": "^9.39.4",
     "husky": "^9.1.7",
