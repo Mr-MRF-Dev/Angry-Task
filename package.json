@@ -62,7 +62,7 @@
     "autoprefixer": "^10.5.2",
     "eslint": "^10.6.0",
     "husky": "^9.1.7",
-    "jasmine-core": "~6.2.0",
+    "jasmine-core": "~6.3.0",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.1",
@@ -73,9 +73,9 @@
     "postcss": "^8.5.16",
     "prettier": "^3.9.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "tailwindcss": "^4.3.0",
+    "tailwindcss": "^4.3.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "8.59.2"
+    "typescript-eslint": "8.62.1"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write"
