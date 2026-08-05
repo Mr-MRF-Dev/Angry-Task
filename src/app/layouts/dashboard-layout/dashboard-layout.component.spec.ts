@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardLayoutComponent } from './dashboard-layout.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemeModeService } from '../../services/themeService/theme-mode.service';
 
 describe('DashboardLayoutComponent: Initialize Tests', () => {
@@ -10,7 +9,7 @@ describe('DashboardLayoutComponent: Initialize Tests', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardLayoutComponent, NoopAnimationsModule],
+      imports: [DashboardLayoutComponent],
       providers: [ThemeModeService],
     }).compileComponents();
 
@@ -24,15 +23,13 @@ describe('DashboardLayoutComponent: Initialize Tests', () => {
   });
 
   it('SHOULD have a title of app WHEN initialized', () => {
-    const title = fixture.debugElement.nativeElement.querySelector('header p');
-    expect(title?.textContent).toContain('Angry Task');
+    const p = fixture.debugElement.nativeElement.querySelector('p');
+    expect(p?.textContent).toContain('Angry Task');
   });
 
-  it('SHOULD have a theme toggle button WHEN initialized', () => {
-    const button = fixture.debugElement.nativeElement.querySelector(
-      'button[aria-label="Toggle theme"]',
-    );
-    expect(button).toBeTruthy();
+  it('SHOULD have menubar tag WHEN initialized', () => {
+    const menu = fixture.debugElement.nativeElement.querySelector('p-menubar');
+    expect(menu).toBeTruthy();
   });
 
   it('SHOULD get h screen fully WHEN initialized', () => {
@@ -48,7 +45,7 @@ describe('DashboardLayoutComponent: functionality', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardLayoutComponent, NoopAnimationsModule],
+      imports: [DashboardLayoutComponent],
       providers: [ThemeModeService],
     }).compileComponents();
 
