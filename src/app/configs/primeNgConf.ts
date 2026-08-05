@@ -1,7 +1,7 @@
 import Aura from '@primeng/themes/aura';
 
 // PNG: Prime NG Config
-export const PNGConfPerfix = 'p';
+export const PNGConfPrefix = 'p';
 export const PNGDarkModeSelector = 'dark';
 
 export const PNGConfig = {
@@ -9,8 +9,9 @@ export const PNGConfig = {
     preset: Aura,
     options: {
       darkModeSelector: `.${PNGDarkModeSelector}`,
-      prefix: PNGConfPerfix,
+      prefix: PNGConfPrefix,
       cssLayer: false,
+      license: import.meta.env.NG_APP_PRIMEUI_LICENSE_KEY,
     },
   },
 };
@@ -42,7 +43,6 @@ export const PNGConfig = {
 //     //   preset: Aura,
 //     // });
 
-//     // sasds
 //     this.toggleDarkMode();
 //   }
 
