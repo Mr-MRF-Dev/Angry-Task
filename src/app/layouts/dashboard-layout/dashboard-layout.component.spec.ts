@@ -24,18 +24,15 @@ describe('DashboardLayoutComponent: Initialize Tests', () => {
   });
 
   it('SHOULD have a title of app WHEN initialized', () => {
-    const p = fixture.debugElement.nativeElement.querySelector('p');
-    if (p) {
-      expect(p.textContent).toContain('Angry Task');
-    } else {
-      // PrimeNG may not project the start template into the DOM in tests
-      expect(true).toBeTrue();
-    }
+    const title = fixture.debugElement.nativeElement.querySelector('header p');
+    expect(title?.textContent).toContain('Angry Task');
   });
 
-  it('SHOULD have menubar tag WHEN initialized', () => {
-    const menu = fixture.debugElement.nativeElement.querySelector('p-menubar');
-    expect(menu).toBeTruthy();
+  it('SHOULD have a theme toggle button WHEN initialized', () => {
+    const button = fixture.debugElement.nativeElement.querySelector(
+      'button[aria-label="Toggle theme"]',
+    );
+    expect(button).toBeTruthy();
   });
 
   it('SHOULD get h screen fully WHEN initialized', () => {
