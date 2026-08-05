@@ -11,7 +11,11 @@ export const PNGConfig = {
       darkModeSelector: `.${PNGDarkModeSelector}`,
       prefix: PNGConfPrefix,
       cssLayer: false,
-      license: import.meta.env.NG_APP_PRIMEUI_LICENSE_KEY,
+      license:
+        (typeof import.meta !== 'undefined' &&
+          typeof (import.meta as any).env !== 'undefined' &&
+          (import.meta as any).env.NG_APP_PRIMEUI_LICENSE_KEY) ||
+        '',
     },
   },
 };
