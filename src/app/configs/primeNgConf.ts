@@ -1,5 +1,18 @@
 import Aura from '@primeng/themes/aura';
 
+interface ImportMetaEnv {
+  readonly NG_APP_PRIMEUI_LICENSE_KEY?: string;
+}
+
+interface ImportMeta {
+  readonly env?: ImportMetaEnv;
+}
+
+const getPrimeUiLicense = (): string => {
+  const meta = import.meta as ImportMeta;
+  return meta.env?.NG_APP_PRIMEUI_LICENSE_KEY ?? '';
+};
+
 // PNG: Prime NG Config
 export const PNGConfPrefix = 'p';
 export const PNGDarkModeSelector = 'dark';
@@ -11,11 +24,7 @@ export const PNGConfig = {
       darkModeSelector: `.${PNGDarkModeSelector}`,
       prefix: PNGConfPrefix,
       cssLayer: false,
-      license:
-        (typeof import.meta !== 'undefined' &&
-          typeof (import.meta as any).env !== 'undefined' &&
-          (import.meta as any).env.NG_APP_PRIMEUI_LICENSE_KEY) ||
-        '',
+      license: getPrimeUiLicense(),
     },
   },
 };
