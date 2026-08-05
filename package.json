@@ -62,6 +62,7 @@
     "autoprefixer": "^10.5.4",
     "eslint": "^10.8.0",
     "husky": "^9.1.7",
+    "istanbul-lib-instrument": "^6.0.3",
     "jasmine-core": "~6.3.0",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
