@@ -1,13 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { MenubarModule } from 'primeng/menubar';
-import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar';
 import { ThemeModeService } from '../../services/themeService/theme-mode.service';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-layout',
-  imports: [AvatarModule, MenubarModule, ButtonModule, RouterOutlet],
+  imports: [RouterOutlet],
   templateUrl: './dashboard-layout.component.html',
   styleUrl: './dashboard-layout.component.css',
 })
